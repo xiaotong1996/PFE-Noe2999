@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>483</x>
+      <y>84</y>
+      <w>119</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Vaisseau
+--
+- salles(List&lt;Salle&gt;)
+- energieMax(int)
+- energie(int)
+- nourritureMax(int)
+- nourritureVeg(int)
+- nourritureViande(int)
+- materiauxMax(int)
+- materiaux(int)
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>756</x>
+      <y>119</y>
+      <w>119</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Salle
+--
+- salleEtat(SalleEtat)
+- taille(int)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>245</x>
+      <y>231</y>
+      <w>154</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Carte
+--
+- destinations(List&lt;Destination&gt;)
+- destinationActuelle(Destination)
+- meteo
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>882</x>
+      <y>119</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>enum SalleEtat
+--
+NON	AMENAGEE
+AMENAGEE
+CASSEE
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>224</x>
+      <y>322</y>
+      <w>266</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Destination
+--
+- tempsVersAutresDestinations(Dictionary&lt;Destination,int&gt;)
+- ecosysteme(Ecosysteme)
+- ressources(Dictionary&lt;Ressource,int&gt;)
+- etreVivants(List&lt;EtreVivant&gt;)
+- name(String)
+- hauteur(int)
+- dejaVu(bool)
+- meteo(Meteo)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>476</y>
+      <w>112</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>enum EcosystemeType
+--
+FORET
+DESERT
+NEIGE
+MONTAGNE
+JUNGLE
+PLAINE
+VILLE
+AUCUN
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>252</x>
+      <y>91</y>
+      <w>147</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>GameManager
+--
+- vaisseau(Vaisseau)
+- seaLevel(int)
+- carte(Carte)
+- date(int)
+- joueurDestination(Destination)
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>42</x>
+      <y>280</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>VoyageEvenement
+--
+- description(string)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>224</x>
+      <y>497</y>
+      <w>266</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Ecosysteme
+--
+- ecosystemeType(EcosystemeType)
+- ecosystemeViable(bool)
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>42</x>
+      <y>196</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>AbstractEvenement
+--
+- description(string)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>42</x>
+      <y>364</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>EvenementManager
+--
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>833</x>
+      <y>343</y>
+      <w>203</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>EtreVivant
+--
+- taille(int)
+- nourritureFavorite(NourritureType)
+- nourritureConsommee(int)
+- periodeDeVie(int)
+- periodeDeReproduction(int)
+- ecosystemeFavorit(EcosystemeType)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>931</x>
+      <y>252</y>
+      <w>168</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>SalleRessources
+--
+- ressourceType(RessourceType)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>826</x>
+      <y>189</y>
+      <w>175</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>791</x>
+      <y>252</y>
+      <w>126</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>SalleAnimaux
+--
+- animaux(List&lt;Animaux&gt;)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>805</x>
+      <y>189</y>
+      <w>56</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>252</y>
+      <w>126</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>SalleJardin
+--
+- plantes(List&lt;plantes&gt;)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>707</x>
+      <y>189</y>
+      <w>112</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>35</x>
+      <y>455</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Meteo
+--
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>910</x>
+      <y>532</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Plantes
+--
+- rendement(int)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>525</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Animaux
+--
+- enCouple(bool)
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>791</x>
+      <y>441</y>
+      <w>140</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>441</y>
+      <w>63</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1008</x>
+      <y>119</y>
+      <w>119</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>enum RessourceType
+--
+ENERGIE
+MATERIAUX
+NOURRITURE
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>700</x>
+      <y>357</y>
+      <w>119</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>enum NourritureType
+--
+NOURRITUREVIANDE
+NOURRITUREVEG
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>203</x>
+      <y>63</y>
+      <w>945</w>
+      <h>581</h>
+    </coordinates>
+    <panel_attributes>lt=.
+Prototype</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>14</x>
+      <y>70</y>
+      <w>168</w>
+      <h>476</h>
+    </coordinates>
+    <panel_attributes>lt=.
+TODO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>42</x>
+      <y>112</y>
+      <w>119</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>UIManager
+--
+
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>84</y>
+      <w>483</w>
+      <h>546</h>
+    </coordinates>
+    <panel_attributes>lt=.
+Salle</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>224</x>
+      <y>231</y>
+      <w>413</w>
+      <h>399</h>
+    </coordinates>
+    <panel_attributes>lt=.
+Carte</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>231</x>
+      <y>77</y>
+      <w>399</w>
+      <h>147</h>
+    </coordinates>
+    <panel_attributes>lt=.
+GameManager</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
