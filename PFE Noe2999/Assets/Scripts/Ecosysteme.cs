@@ -11,6 +11,7 @@ public enum EcosystemeType
     JUNGLE,
     PLAINE,
     VILLE,
+    SAVANE,
     AUCUN
 }
 
