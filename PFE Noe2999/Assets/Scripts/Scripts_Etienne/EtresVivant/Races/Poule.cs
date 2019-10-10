@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Poule : EtreVivant
 {
-    public Poule()
+    protected override void Start()
     {
+        base.Start();
         description = "Se fait bouffer par les lions ! [Vous ne pouvez pas le placer dans la même salle qu'un lion]";
+        Taille = 1;
         NourritureConsommee = 1;
         NourritureFavorite = NourritureType.NOURRITUREVEG;
         PeriodeDeVie = 1500;

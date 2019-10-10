@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SalleAnimaux : Salle
+public class SalleEmbarquement : Salle
 {
-    [SerializeField]
-    private int tailleOcuppee;
-    public int TailleOcuppee { get => tailleOcuppee; set => tailleOcuppee = value; }
-
     [SerializeField]
     private List<EtreVivant> animaux;
     public List<EtreVivant> Animaux { get => animaux; set => animaux = value; }

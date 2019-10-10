@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Zebre : EtreVivant
 {
-    public Zebre()
+    protected override void Start()
     {
+        base.Start();
         description = "Se fait bouffer par les lions ! [Vous ne pouvez pas le placer dans la même salle qu'un lion";
+        Taille = 5;
         NourritureConsommee = 5;
         NourritureFavorite = NourritureType.NOURRITUREVEG;
         PeriodeDeVie = 3000;

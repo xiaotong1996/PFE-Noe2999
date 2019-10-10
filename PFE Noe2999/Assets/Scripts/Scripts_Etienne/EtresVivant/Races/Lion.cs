@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Lion : EtreVivant
 {
-    public Lion()
+    protected override void Start()
     {
+        base.Start();
         description = "Mange les poules !! [Vous ne pouvez pas le placer dans la même salle qu'une poule]";
+        Taille = 6;
         NourritureConsommee = 10;
         NourritureFavorite = NourritureType.NOURRITUREVIANDE;
         PeriodeDeVie = 5000;

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Chat : EtreVivant
 {
-    public Chat()
+    protected override void Start()
     {
+        base.Start(); 
         description = "Ne s'entend pas avec les chiens ! [Vous ne pouvez pas le placer dans la même salle qu'un chien]";
+        Taille = 2;
         NourritureConsommee = 5;
         NourritureFavorite = NourritureType.NOURRITUREVIANDE;
         PeriodeDeVie = 3000;

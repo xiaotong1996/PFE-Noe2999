@@ -7,7 +7,7 @@ public class Destination : MonoBehaviour
     private Dictionary<Destination, int> tempsVersAutresDestinations;
     private Ecosysteme ecosysteme;
     //private Dictionary<Ressource, int> ressources;
-    //private List<EtreVivant> etreVivants;
+    public List<EtreVivant> etreVivant;
     private new string name;
     private int hauteur;
     private bool dejaVu;

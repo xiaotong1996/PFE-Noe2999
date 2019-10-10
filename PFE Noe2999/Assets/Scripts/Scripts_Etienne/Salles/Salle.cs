@@ -10,7 +10,7 @@ public class Salle : MonoBehaviour
 
     [SerializeField]
     private int taille;
-    public int Taille { get => taille; set => taille = value; }
+    public int Taille { get => taille; protected set => taille = value; }
 
     [SerializeField]
     private EnumSalleType salleType;

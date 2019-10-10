@@ -107,7 +107,7 @@ public class Vaisseau : MonoBehaviour
     }
 
 
-    void ConsommerNourritureVeg(int n_veg)
+    public void ConsommerNourritureVeg(int n_veg)
     {
         if (NourritureVeg == 0)
             Debug.Log(" il n'y a plus de NourritureVeg");
@@ -121,7 +121,7 @@ public class Vaisseau : MonoBehaviour
             NourritureVeg -= n_veg;
     }
 
-    void AjouterNourritureViandeg(int n_viand)
+    public void AjouterNourritureViande(int n_viand)
     {
         if (NourritureVeg + NourritureViande == NourritureMax)
             Debug.Log("Nourriture est max！");
@@ -133,7 +133,7 @@ public class Vaisseau : MonoBehaviour
     }
 
 
-    void ConsommerNourritureViande(int n_viand)
+    public void ConsommerNourritureViande(int n_viand)
     {
         if (NourritureViande == 0)
             Debug.Log(" il n'y a plus de NourritureViandw");
@@ -173,7 +173,7 @@ public class Vaisseau : MonoBehaviour
             n_materiaux -= n_materiaux;
     }
 
-
+    //avant d'effectuer un mouvement, vérifier que SalleEmbarquement et SalleNaissance sont vides ! (Sinon le mouvement n'est pas possible)
     void MoveMent(Transform currentIle, Transform destination)
     {
         //TODO
