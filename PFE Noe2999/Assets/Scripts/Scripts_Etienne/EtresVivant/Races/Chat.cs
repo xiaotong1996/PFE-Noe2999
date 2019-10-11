@@ -4,22 +4,38 @@ using UnityEngine;
 
 public class Chat : EtreVivant
 {
-    protected override void Start()
+   public Chat(int _joursVecus) 
     {
-        base.Start(); 
+        vaisseau = FindObjectOfType<Vaisseau>();
+        JoursVecus = _joursVecus;
+        EstMature = false;
+        PeriodeDepuisEnCouple = 0;
+        EnCouple = false;
+        EnCoupleAvec = null;
+        float randomfloat = Random.Range(0.0f, 1.0f);
+        //Sexe est définis aléatoirement
+        if (randomfloat > 0.5f)
+        {
+            Sexe = EnumSexe.MALE;
+        }
+        else
+        {
+            Sexe = EnumSexe.FEMELLE;
+        }
         description = "Ne s'entend pas avec les chiens ! [Vous ne pouvez pas le placer dans la même salle qu'un chien]";
         Taille = 2;
         NourritureConsommee = 5;
         NourritureFavorite = NourritureType.NOURRITUREVIANDE;
         PeriodeDeVie = 3000;
-        JoursVecus = 0;
+        JoursAvantMaturite = 1000;
         PeriodeDeReproduction = 70;
-        PeriodeDepuisEnCouple = 0;
         EcosystemeFavorit = EcosystemeType.PLAINE;
         Race = EnumRace.CHAT;
         AnimauxDetestes = new List<EnumRace>();
         AnimauxDetestes.Add(EnumRace.CHIEN);
-        EnCouple = false;
-        //il faut aussi définir le sexe
+        if (_joursVecus >= JoursAvantMaturite)
+        {
+            EstMature = true;
+        }
     }
 }

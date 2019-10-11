@@ -11,4 +11,10 @@ public class SalleJardin : Salle
     [SerializeField]
     private List<Plantes> plantes;
     public List<Plantes>  Plantes { get => plantes; set => plantes = value; }
+
+    public SalleJardin()
+    {
+        SalleEtat = EnumEtatsPossiblesSalle.AMENAGEE;
+        SalleType = EnumSalleType.JARDIN;
+    }
 }*/

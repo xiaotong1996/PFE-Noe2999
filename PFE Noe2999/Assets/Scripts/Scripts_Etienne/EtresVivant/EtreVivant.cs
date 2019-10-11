@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,11 @@ public class EtreVivant : MonoBehaviour
     //la description de l'être vivant à afficher lorsque le joueur passe sa sourie dessus par exemple ; il faut aussi afficher les autres informations comme la duréedevie, nourriture, etc.
     public string description; 
 
-    private Vaisseau vaisseau;
+    protected Vaisseau vaisseau;
+
+    [SerializeField]
+    private SalleAnimaux positionSalle;
+    public SalleAnimaux PositionSalle { get => positionSalle; set => positionSalle = value; }
 
     [SerializeField]
     private int taille;
@@ -32,6 +35,16 @@ public class EtreVivant : MonoBehaviour
     private int joursVecus;
     public int JoursVecus { get => joursVecus; protected set => joursVecus = value; }
 
+    #region variables liées au couple
+
+    [SerializeField]
+    private int joursVAvantMaturite;
+    public int JoursAvantMaturite { get => joursVAvantMaturite; protected set => joursVAvantMaturite = value; }
+
+    [SerializeField]
+    private bool estMature;
+    public bool EstMature { get => estMature; set => estMature = value; }
+
     [SerializeField]
     private int periodeDeReproduction;
     public int PeriodeDeReproduction { get => periodeDeReproduction; protected set => periodeDeReproduction = value; }
@@ -41,9 +54,24 @@ public class EtreVivant : MonoBehaviour
     public int PeriodeDepuisEnCouple { get => periodeDepuisEnCouple; protected set => periodeDepuisEnCouple = value; }
 
     [SerializeField]
+    private EnumSexe sexe;
+    public EnumSexe Sexe { get => sexe; protected set => sexe = value; }
+
+    [SerializeField]
+    private bool enCouple;
+    public bool EnCouple { get => enCouple; protected set => enCouple = value; }
+
+    [SerializeField]
+    private EtreVivant enCoupleAvec;
+    public EtreVivant EnCoupleAvec { get => enCoupleAvec; protected set => enCoupleAvec = value; }
+
+    #endregion
+
+    [SerializeField]
     private EcosystemeType ecosystemeFavorit;
     public EcosystemeType EcosystemeFavorit { get => ecosystemeFavorit; protected set => ecosystemeFavorit = value; }
     
+
     //Ce booléen permet de savoir si l'etre vivant est sur une île qui est viable ; à ce moment là on peut considérer qu'il ne meurt plus puisque l'écosystème se régénere, il faut donc changer son état
     //en fait on pourrait même carrément le supprimer et l'ignorer lorsqu'il arrive dans un ecosysteme viable, à réfléchir
     [SerializeField]
@@ -65,19 +93,26 @@ public class EtreVivant : MonoBehaviour
     private List<EnumRace> animauxDetestes;
     public List<EnumRace> AnimauxDetestes { get => animauxDetestes; protected set => animauxDetestes = value; }
 
-    [SerializeField]
-    private EnumSexe sexe;
-    public EnumSexe Sexe { get => sexe; protected set => sexe = value; }
-
-    [SerializeField]
-    private bool enCouple;
-    public bool EnCouple { get => enCouple; protected set => enCouple = value; }
     #endregion
 
-    protected virtual void Start()
+    protected EtreVivant()
     {
         vaisseau = FindObjectOfType<Vaisseau>();
-        //TODO : SetSex
+        JoursVecus = 0;
+        EstMature = false;
+        PeriodeDepuisEnCouple = 0;
+        EnCouple = false;
+        EnCoupleAvec = null;
+        float randomfloat = Random.Range(0.0f, 1.0f);
+        //Sexe est définis aléatoirement
+        if (randomfloat > 0.5f)
+        {
+            Sexe = EnumSexe.MALE;
+        }
+        else
+        {
+            Sexe = EnumSexe.FEMELLE;
+        }
     }
     #region méthodes 
 
@@ -88,10 +123,51 @@ public class EtreVivant : MonoBehaviour
         Destroy(gameObject);
         //TODO?
     }
-
+    
+    //Celle ci est un peu moche
     private void Reproduction()
     {
-        //TODO
+        if (this.Race == EnumRace.CHAT)
+        {
+            Chat nouveauNe = new Chat(0);
+            SalleNaissance salleNaissance = FindObjectOfType<SalleNaissance>();
+            nouveauNe.positionSalle = salleNaissance;
+            salleNaissance.Animaux.Add(nouveauNe);
+            Debug.Log("Un chat est né !");
+        }
+        else if (this.Race == EnumRace.CHIEN)
+        {
+            Chien nouveauNe = new Chien(0);
+            SalleNaissance salleNaissance = FindObjectOfType<SalleNaissance>();
+            nouveauNe.positionSalle = salleNaissance;
+            salleNaissance.Animaux.Add(nouveauNe);
+            Debug.Log("Un chien est né !");
+        }
+        else if (this.Race == EnumRace.POULE)
+        {
+            Poule nouveauNe = new Poule(0);
+            SalleNaissance salleNaissance = FindObjectOfType<SalleNaissance>();
+            nouveauNe.positionSalle = salleNaissance;
+            salleNaissance.Animaux.Add(nouveauNe);
+            Debug.Log("Une poule est né !");
+        }
+        else if (this.Race == EnumRace.ZEBRE)
+        {
+            Zebre nouveauNe = new Zebre(0);
+            SalleNaissance salleNaissance = FindObjectOfType<SalleNaissance>();
+            nouveauNe.positionSalle = salleNaissance;
+            salleNaissance.Animaux.Add(nouveauNe);
+            Debug.Log("Un zebre est né !");
+        }
+        else if (this.Race == EnumRace.LION)
+        {
+            Lion nouveauNe = new Lion(0);
+            SalleNaissance salleNaissance = FindObjectOfType<SalleNaissance>();
+            nouveauNe.positionSalle = salleNaissance;
+            salleNaissance.Animaux.Add(nouveauNe);
+            Debug.Log("Un lion est né !");
+        }
+
         /*Type raceAnimal = this.GetType();
         raceAnimal nouveauNe;
         Debug.Log("Un {0} est né !", raceAnimal);
@@ -133,19 +209,27 @@ public class EtreVivant : MonoBehaviour
             //gestion de enCouple
             foreach(EtreVivant etrevivant in sallefinale.Animaux)
             {
-                if ((etrevivant.Race == this.Race) && (etrevivant.Sexe != this.Sexe)) 
+                if ((etrevivant.Race == this.Race) && (etrevivant.Sexe != this.Sexe)&&(etrevivant.EstMature)&&(etrevivant.EnCouple == false))
                 {
-                    EnCouple = true;
+                    etrevivant.EnCouple = true;
+                    etrevivant.EnCoupleAvec = this;
+                    this.EnCoupleAvec = etrevivant;
+                    this.EnCouple = true;
+                    this.PeriodeDepuisEnCouple = 0;
+                    break;
                 }
                 else
                 {
-                    EnCouple = false;
+                    this.EnCouple = false;
+                    this.EnCoupleAvec = null;
+                    this.PeriodeDepuisEnCouple = 0;
                 }
             }
             salleinitiale.TailleOcuppee -= this.Taille;
             sallefinale.TailleOcuppee += this.Taille;
             salleinitiale.Animaux.Remove(this);
             sallefinale.Animaux.Add(this);
+            this.PositionSalle = sallefinale;
             Debug.Log("Déplacement effectué !");
         }
     }
@@ -155,6 +239,7 @@ public class EtreVivant : MonoBehaviour
         salleinitiale.TailleOcuppee -= this.Taille;
         salleinitiale.Animaux.Remove(this);
         destinationfinale.etreVivant.Add(this);
+        this.PositionSalle = null;
     }
 
     //quand on déplace un animal vers le navire, il apparaît toujours dans la même salle dédiée (salle d'embarquement)
@@ -163,6 +248,7 @@ public class EtreVivant : MonoBehaviour
         SalleEmbarquement salleEmbarquement = FindObjectOfType<SalleEmbarquement>();
         salleEmbarquement.Animaux.Add(this);
         destinationinitiale.etreVivant.Remove(this);
+        this.PositionSalle = salleEmbarquement;
     }
 
     //quand on déplace un animal vers la cuisine
@@ -183,19 +269,49 @@ public class EtreVivant : MonoBehaviour
 
         if (this.JoursVecus >= this.PeriodeDeVie)
         {
+            if (this.EnCoupleAvec != null)
+            {
+                this.EnCoupleAvec.EnCoupleAvec = null;
+                this.EnCoupleAvec.PeriodeDepuisEnCouple = 0;
+                this.EnCoupleAvec.EnCouple = false;
+            }
             Mort();
         }
 
-        if (this.EnCouple)
+        #region gestion du couple
+
+        if ((this.JoursVecus >= this.JoursAvantMaturite)&&(this.EstMature ==false))
+        {
+            this.EstMature = true;
+        }
+
+        if ((this.EstMature == true)&&(this.EnCouple == false))
+        {
+            foreach (EtreVivant partenairePotentiel in this.PositionSalle.Animaux)
+            {
+                if ((partenairePotentiel.Sexe != this.Sexe)&&(partenairePotentiel.EstMature)&&(partenairePotentiel.EnCouple == false)&&(partenairePotentiel.Race == this.Race))
+                {
+                    this.EnCouple = true;
+                    partenairePotentiel.EnCouple = true;
+                    this.EnCoupleAvec = partenairePotentiel;
+                    partenairePotentiel.EnCoupleAvec = this;
+                    break;
+                }
+            }
+        }
+
+        if ((this.EnCouple)&&(this.EstMature)) 
         {
             PeriodeDepuisEnCouple += NombreDeJoursQuiPassent;
         }
 
-        if (this.PeriodeDepuisEnCouple >= this.PeriodeDeReproduction)
+        if ((this.PeriodeDepuisEnCouple >= this.PeriodeDeReproduction)&&(this.Sexe == EnumSexe.FEMELLE))
         {
             Reproduction();
             PeriodeDepuisEnCouple = 0;
         }
+
+        #endregion
 
         if (this.NourritureFavorite == NourritureType.NOURRITUREVIANDE)
         {

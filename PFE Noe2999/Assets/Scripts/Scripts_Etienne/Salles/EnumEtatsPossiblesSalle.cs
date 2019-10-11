@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SalleCuisine : Salle
+public enum EnumEtatsPossiblesSalle
 {
-
+    NONAMENAGEE,
+    AMENAGEE,
+    CASSEE
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum EnumSexe
 {
-    MASCULIN,
-    FEMININ
+    MALE,
+    FEMELLE
 }
 

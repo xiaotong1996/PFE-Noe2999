@@ -11,4 +11,10 @@ public class SalleAnimaux : Salle
     [SerializeField]
     private List<EtreVivant> animaux;
     public List<EtreVivant> Animaux { get => animaux; set => animaux = value; }
+
+    public SalleAnimaux()
+    {
+        SalleEtat = EnumEtatsPossiblesSalle.AMENAGEE;
+        SalleType = EnumSalleType.STOCKANIMAUX;
+    }
 }
