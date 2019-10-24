@@ -27,6 +27,10 @@ public class Ecosysteme
 
     public bool IsEcosystemeViable { get => isEcosystemeViable; set => isEcosystemeViable = value; }
 
+    public Ecosysteme(EcosystemeType type)
+    {
+        EcosystemeType = type;
+    }
 
 
 }

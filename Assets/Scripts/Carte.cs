@@ -10,4 +10,8 @@ public class Carte
     public Destination DestinationActuelle { get => destinationActuelle; set => destinationActuelle = value; }
     public List<Destination> Destinations { get => destinations; set => destinations = value; }
 
+    public Carte()
+    {
+
+    }
 }

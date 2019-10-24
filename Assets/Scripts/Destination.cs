@@ -13,7 +13,7 @@ public class Destination : MonoBehaviour
     private bool dejaVu;
     //private Meteo meteo;
 
-    public Dictionary<Destination, int> TempsVersAutresDestinations { get => tempsVersAutresDestinations; set => tempsVersAutresDestinations = value; }
+    //public Dictionary<Destination, int> TempsVersAutresDestinations { get => tempsVersAutresDestinations; set => tempsVersAutresDestinations = value; }
 
     public Ecosysteme Ecosysteme { get => ecosysteme; set => ecosysteme = value; }
 
@@ -23,5 +23,9 @@ public class Destination : MonoBehaviour
 
     public bool DejaVu { get => dejaVu; set => dejaVu = value; }
 
+    public Destination()
+    {
+        
+    }
     
 }
