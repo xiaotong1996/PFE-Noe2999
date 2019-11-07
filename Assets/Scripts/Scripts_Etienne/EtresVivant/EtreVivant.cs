@@ -238,7 +238,7 @@ public class EtreVivant : MonoBehaviour
     {
         salleinitiale.TailleOcuppee -= this.Taille;
         salleinitiale.Animaux.Remove(this);
-        destinationfinale.etreVivant.Add(this);
+        destinationfinale.EtreVivant.Add(this);
         this.PositionSalle = null;
     }
 
@@ -247,7 +247,7 @@ public class EtreVivant : MonoBehaviour
     {
         SalleEmbarquement salleEmbarquement = FindObjectOfType<SalleEmbarquement>();
         salleEmbarquement.Animaux.Add(this);
-        destinationinitiale.etreVivant.Remove(this);
+        destinationinitiale.EtreVivant.Remove(this);
         this.PositionSalle = salleEmbarquement;
     }
 

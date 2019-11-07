@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Destination : MonoBehaviour
 {
-    private Dictionary<Destination, int> tempsVersAutresDestinations;
+    #region Variable
+    private Vector2 positionDansLaCarte;
+    //private Dictionary<Destination, int> tempsVersAutresDestinations;
     private Ecosysteme ecosysteme;
     //private Dictionary<Ressource, int> ressources;
-    public List<EtreVivant> etreVivant;
+
+    [SerializeField]
+    private List<EtreVivant> etreVivant;
+
     private new string name;
-    private int hauteur;
+    private float hauteur;
     private bool dejaVu;
     //private Meteo meteo;
 
@@ -19,13 +24,34 @@ public class Destination : MonoBehaviour
 
     public string Name { get => name; set => name = value; }
 
-    public int Hauteur { get => hauteur; set => hauteur = value; }
+    public float Hauteur { get => hauteur; set => hauteur = value; }
 
     public bool DejaVu { get => dejaVu; set => dejaVu = value; }
 
-    public Destination()
-    {
-        
-    }
+    public Vector2 PositionDansLaCarte { get => positionDansLaCarte; set => positionDansLaCarte = value; }
+
+    public List<EtreVivant> EtreVivant { get => etreVivant; set => etreVivant = value; }
+
+
+    #endregion
+
     
+
+    private void Awake()
+    {
+        System.Array values = System.Enum.GetValues(typeof(EcosystemeType));
+        
+
+        PositionDansLaCarte = new Vector2(Random.Range(-7.0f, 7.0f), Random.Range(-6.0f, 6.0f));
+
+        EcosystemeType randomEcosystemType = (EcosystemeType)values.GetValue(Random.Range(0,values.Length));
+        Ecosysteme = new Ecosysteme(randomEcosystemType);
+        Name = randomEcosystemType.ToString() + Random.Range(1000, 9999);
+        Hauteur = Random.Range(0.0f, 50.0f);
+
+        transform.Translate(PositionDansLaCarte);
+    }
+
+
+
 }
