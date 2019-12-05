@@ -71,8 +71,10 @@ public class StorageBoxManager : MonoBehaviour
 
     private void GridUI_OnLeftEndDrag(Transform preGrid, Transform CurPosition)
     {
+        if (!isDrag) return;
         isDrag = false;
         DragItem.Hide();
+
        
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         

@@ -9,13 +9,10 @@ public class InputMouseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        //Panel = GameObject.Find("StorageBoxUI").transform.Find("GridPanel").gameObject;
-        ////isOpen = !isOpen;
-        //if(!Panel)
-        //{
-        //    Panel.SetActive(isOpen);
-        //}
+
+        Panel = GameObject.Find("StorageBoxUI").transform.Find("GridPanel").gameObject;
+        Panel.SetActive(false);
+       
 
     }
 
