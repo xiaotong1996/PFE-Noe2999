@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Map.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: 49229b281cee84bedbbe01bee6c556cc
   - enabled: 1
@@ -17,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Vaisseau.unity
     guid: c8dd0f5149686bd4aa544461885ec56c
+  - enabled: 1
+    path: Assets/Scenes/Map3D.unity
+    guid: a7654795a175fc946a02be2d8f73ceb8
   m_configObjects: {}

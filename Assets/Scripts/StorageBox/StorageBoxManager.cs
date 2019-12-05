@@ -27,6 +27,14 @@ public class StorageBoxManager : MonoBehaviour
         LoadItem();
         //GridUI.OnEnter
 
+        StoreItem("Apple");
+        StoreItem("Banana");
+        StoreItem("Fish");
+        StoreItem("Chicken");
+        StoreItem("Apple");
+        StoreItem("Banana");
+        StoreItem("Fish");
+        StoreItem("Chicken");
         GridUI.OnLeftBeginDrag += GridUI_OnLeftBeginDrag;
         GridUI.OnLeftEndDrag += GridUI_OnLeftEndDrag;
 

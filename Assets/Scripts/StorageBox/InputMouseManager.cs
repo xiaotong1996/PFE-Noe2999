@@ -30,7 +30,7 @@ public class InputMouseManager : MonoBehaviour
                     Destroy(hit.collider.gameObject);
                 }
 
-                if(hit.collider.name == "Box")
+                if(hit.collider.name == "Chest_Button")
                 {
                     isOpen = !isOpen;
                     Panel.SetActive(isOpen);
@@ -39,4 +39,12 @@ public class InputMouseManager : MonoBehaviour
         }
 
     }
+
+    public void OnButtonClick()
+    {
+        isOpen = !isOpen;
+        Panel.SetActive(isOpen);
+    }
+
+
 }
