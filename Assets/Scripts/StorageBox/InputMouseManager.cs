@@ -11,9 +11,8 @@ public class InputMouseManager : MonoBehaviour
     {
 
         Panel = GameObject.Find("StorageBoxUI").transform.Find("GridPanel").gameObject;
-        //isOpen = !isOpen;
-        Panel.SetActive(isOpen);
-
+        Panel.SetActive(false);
+       
 
     }
 
