@@ -75,7 +75,7 @@ public class MoveOnEarth : MonoBehaviour
                 }
 
             }
-            Debug.Log(Vector3.Distance(transform.position, desPos));
+//            Debug.Log(Vector3.Distance(transform.position, desPos));
             if (Vector3.Distance(transform.position, desPos) < 5f)
             {
                 IsMove = false;

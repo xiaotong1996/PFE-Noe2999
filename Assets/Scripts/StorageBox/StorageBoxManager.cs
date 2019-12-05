@@ -11,10 +11,10 @@ public class StorageBoxManager : MonoBehaviour
 
     public Dictionary<string, Item> ItemList = new Dictionary<string, Item>();
     public GridPanelUI m_GridPanelUI;
-    public GameObject itemGO;
-    public GameObject itemPre;
+  
+    
 
-    public Transform T;
+   
 
     public DragItemUI DragItem;
 
@@ -23,56 +23,72 @@ public class StorageBoxManager : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
+        DragItem = GameObject.Find("StorageBoxUI").transform.Find("Item").GetComponent<DragItemUI>();
+
+        if (_instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            _instance = this;
+        }
+        else if (_instance != null)
+        {
+            Destroy(gameObject);
+        }
+
         LoadItem();
         //GridUI.OnEnter
 
-        StoreItem("Apple");
-        StoreItem("Banana");
-        StoreItem("Fish");
-        StoreItem("Chicken");
-        StoreItem("Apple");
-        StoreItem("Banana");
-        StoreItem("Fish");
-        StoreItem("Chicken");
+       
+        ReLoadBoxItem();
         GridUI.OnLeftBeginDrag += GridUI_OnLeftBeginDrag;
         GridUI.OnLeftEndDrag += GridUI_OnLeftEndDrag;
 
     }
 
+
     private void GridUI_OnLeftBeginDrag(Transform gridTransform)
     {
         if (gridTransform.childCount == 0)
+        {
+            
             return;
+        }
         else
         {
+            
             Item item = BoxDataModel.GetItem(gridTransform.name);
-            //Debug.Log(item.Icon);
+            Debug.Log(item.Icon);
             DragItem.UpdateImage(item.Icon);
             //DragItem.UpdateText(item.Number);
             BoxDataModel.ReduceItem(gridTransform.name, item);
             gridTransform.GetChild(0).GetComponent<ItemUI>().UpdateText(item.Number);
-            if(item.Number <=0)
+            if (item.Number <= 0)
                 Destroy(gridTransform.GetChild(0).gameObject);
             isDrag = true;
         }
     }
 
+
     private void GridUI_OnLeftEndDrag(Transform preGrid, Transform CurPosition)
     {
         isDrag = false;
         DragItem.Hide();
-        T = CurPosition;
+       
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         
         string entreTag="a";
+
         if (hit.collider!=null)
         {
             
             entreTag = hit.transform.tag;
             
         }
+
         Item item = BoxDataModel.GetItem(preGrid.name);
+        Dictionary<string, Item> tmp = BoxDataModel.GetGridITem();
+        
+        
         if (entreTag == "Herbivore" && item.FoodType == NourritureType.NOURRITUREVEG
             || entreTag == "Carnivore" && item.FoodType == NourritureType.NOURRITUREVIANDE)
         {
@@ -87,13 +103,10 @@ public class StorageBoxManager : MonoBehaviour
                 InitNewItem(item, preGrid);
             }
             
-           
                 BoxDataModel.AddItem(preGrid.name, item);
 
                 preGrid.GetChild(0).GetComponent<ItemUI>().UpdateText(item.Number);
-            
-
-
+         
         }
 
     }
@@ -119,10 +132,7 @@ public class StorageBoxManager : MonoBehaviour
         {
             DragItem.Show();
             DragItem.SetLocalPosition(position);
-        }
-
-       
-            
+        }        
 
 
     }
@@ -169,16 +179,42 @@ public class StorageBoxManager : MonoBehaviour
 
     private void InitNewItem(Item item, Transform parent)
     {
-        itemPre = Resources.Load<GameObject>("Prefabs/UI/StorageBox/Item");
+        GameObject itemPre = Resources.Load<GameObject>("Prefabs/UI/StorageBox/Item");
         itemPre.GetComponent<ItemUI>().UpdateImage(item.Icon);
         itemPre.GetComponent<ItemUI>().UpdateText(item.Number);
-         itemGO = Instantiate(itemPre);
+         GameObject itemGO = Instantiate(itemPre);
         itemGO.transform.SetParent(parent);
         itemGO.transform.localPosition = Vector3.zero;
         itemGO.transform.localScale = Vector3.one;
         BoxDataModel.StoreItem(parent.name, item);
 
 
+    }
+
+    private void ReLoadBoxItem()
+    {
+        Dictionary<string, Item> gridItem = BoxDataModel.GetGridITem();
+        Debug.Log(gridItem.Count + "griditemmmmm");
+        if (gridItem.Count == 0) return;
+        foreach(var i in gridItem)
+        {
+            Transform parentGrid = m_GridPanelUI.GetGridByName(i.Key);
+            if(parentGrid == null)
+            {
+                Debug.LogWarning("this name doesn't exist");
+                return;
+            }
+            GameObject itemPre = Resources.Load<GameObject>("Prefabs/UI/StorageBox/Item");
+            Item item = i.Value;
+            itemPre.GetComponent<ItemUI>().UpdateImage(item.Icon);
+            itemPre.GetComponent<ItemUI>().UpdateText(item.Number);
+            GameObject itemGO = Instantiate(itemPre);
+            itemGO.transform.SetParent(parentGrid);
+            itemGO.transform.localPosition = Vector3.zero;
+            itemGO.transform.localScale = Vector3.one;
+
+
+        }
     }
 
     private void LoadItem()

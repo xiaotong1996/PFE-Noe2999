@@ -21,4 +21,15 @@ public class GridPanelUI : MonoBehaviour
         return null;
     }
 
+    public Transform GetGridByName(string name)
+    {
+        for (int i = 0; i < Grids.Length; ++i)
+        {
+            if (Grids[i].name == name)
+                return Grids[i];
+        }
+
+        return null;
+    }
+
 }

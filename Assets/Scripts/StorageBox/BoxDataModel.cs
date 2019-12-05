@@ -6,6 +6,7 @@ using UnityEngine;
 public static class BoxDataModel 
 {
     private static Dictionary<string,Item> GridItem = new Dictionary<string, Item>();
+    
 
     public static void StoreItem(string gridName, Item item)
     {
@@ -15,8 +16,11 @@ public static class BoxDataModel
        
         GridItem.Add(gridName,item);
     }
-            
-    
+
+    public static Dictionary<string, Item>  GetGridITem()
+    {
+        return GridItem;
+    }
 
     public static void AddItem(string gridName, Item item)
     {
