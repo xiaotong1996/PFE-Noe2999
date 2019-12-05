@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 511517892}
-  m_IndirectSpecularColor: {r: 0.45114994, g: 0.499766, b: 0.56766325, a: 1}
+  m_IndirectSpecularColor: {r: 0.4511503, g: 0.4997667, b: 0.5676641, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -645,6 +645,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphere: {fileID: 870921860}
+--- !u!65 &434191579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434191576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1946.4858, y: 1324.0718, z: 1484.3503}
+  m_Center: {x: -889.04694, y: 662.0359, z: -16.233341}
+--- !u!114 &434191581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434191576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada816ea7f8c02e4a8731a5fe3ce1f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &511517891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,6 +1491,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: birda
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 55fd5e989dbec2545ad65bfd466cd5b0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Vaisseau
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 55fd5e989dbec2545ad65bfd466cd5b0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 55fd5e989dbec2545ad65bfd466cd5b0,
         type: 3}

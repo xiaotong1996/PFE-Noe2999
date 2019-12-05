@@ -10,9 +10,13 @@ public class InputMouseManager : MonoBehaviour
     void Start()
     {
         
-        Panel = GameObject.Find("StorageBoxUI").transform.Find("GridPanel").gameObject;
-        //isOpen = !isOpen;
-        Panel.SetActive(isOpen);
+        //Panel = GameObject.Find("StorageBoxUI").transform.Find("GridPanel").gameObject;
+        ////isOpen = !isOpen;
+        //if(!Panel)
+        //{
+        //    Panel.SetActive(isOpen);
+        //}
+
     }
 
     // Update is called once per frame

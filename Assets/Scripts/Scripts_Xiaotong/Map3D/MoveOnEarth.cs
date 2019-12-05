@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveOnEarth : MonoBehaviour
 {
@@ -76,11 +77,12 @@ public class MoveOnEarth : MonoBehaviour
 
             }
 //            Debug.Log(Vector3.Distance(transform.position, desPos));
-            if (Vector3.Distance(transform.position, desPos) < 5f)
+            if (Vector3.Distance(transform.position, desPos) < 5.5f)
             {
                 IsMove = false;
                 // arrived show island scene
                 // TODO
+                SceneManager.LoadScene("vaiseau_Ile");
             }
         }
     }
