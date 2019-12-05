@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 870921861}
   - component: {fileID: 870921866}
   - component: {fileID: 870921865}
+  - component: {fileID: 870921867}
   m_Layer: 8
   m_Name: Earth
   m_TagString: Earth
@@ -916,6 +917,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 360
   moveOnEarth: {fileID: 434191578}
+--- !u!114 &870921867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870921860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e59b176d36e094a86f00e504ec1134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1005363764
 GameObject:
   m_ObjectHideFlags: 0
