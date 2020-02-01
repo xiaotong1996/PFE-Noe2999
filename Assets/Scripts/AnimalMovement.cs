@@ -14,7 +14,7 @@ public class AnimalMovement : MonoBehaviour
 
     void Start()
     {
-        speed = 1f;
+        speed = 0.3f;
         dir = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10));
         timer = 0;
         isMove = true;
@@ -26,7 +26,7 @@ public class AnimalMovement : MonoBehaviour
         if (!GameManager.Instance.IsSleep)
         {
             timer += Time.deltaTime;
-            if (timer > 2)
+            if (timer > 2.5)
             {
                 ChangeState();
             }
@@ -38,7 +38,7 @@ public class AnimalMovement : MonoBehaviour
             }
             if (GetComponent<EtreVivant>().PositionSalle != null)
             {
-                speed = 0.5f;
+                speed = 0.3f;
             }
         }
     }

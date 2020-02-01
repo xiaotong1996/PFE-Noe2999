@@ -10,7 +10,8 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get { return instance; } }
     public Slider seaLevelSlider;
     public Slider energySlider;
-
+    public Text energy_Text;
+    float textTimer = -1;
 
     private void Awake()
     {
@@ -28,15 +29,30 @@ public class UIManager : MonoBehaviour
     {
         seaLevelSlider = GameObject.Find("Sealevel_Slider").GetComponent<Slider>();
         energySlider = GameObject.Find("Energy_Slider").GetComponent<Slider>();
+        energy_Text = GameObject.Find("Energy_Text").GetComponent<Text>();
     }
 
 
     private void Update()
     {
-        
+        if(textTimer >= 0)
+        {
+            textTimer += Time.deltaTime;
+            if(textTimer >= 1)
+            {
+                energy_Text.text = "";
+                textTimer = -1;
+            }
+        }
         
     }
 
+
+    public void SetEnergyTextValue(int value)
+    {
+        textTimer = 0;
+        energy_Text.text = "+ " + value.ToString();
+    }
     public void SetSeaLevelMax(float value)
     {
         seaLevelSlider.maxValue = value;

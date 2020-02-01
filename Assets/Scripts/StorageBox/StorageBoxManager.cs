@@ -92,11 +92,11 @@ public class StorageBoxManager : MonoBehaviour
                 Dictionary<string, Item> tmp = BoxDataModel.GetGridITem();
 
                 
-                if (animal.CanEat(item.FoodType))
+                if (animal.NourrirAnimal(item.FoodType))
                 {
                     //BoxDataModel.DeleteItem
                     //TODO
-                    animal.NourrirAnimal(item.FoodType);
+                    
                     Debug.Log(hit.collider.name + "eats the " + item.Name + "!");
                 }
                 else

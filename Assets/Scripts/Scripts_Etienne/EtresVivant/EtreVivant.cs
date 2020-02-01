@@ -336,8 +336,16 @@ protected EtreVivant() {
         salleinitiale.Animaux.Remove(this);
         destinationfinale.EtreVivant.Add(Race);
         this.positionDestination = destinationfinale;
-        if(destinationfinale.Ecosysteme.EcosystemeType == EcosystemeFavorit)
+        if (destinationfinale.Ecosysteme.EcosystemeType == EcosystemeFavorit)
+        {
+            UIManager.Instance.SetEnergyTextValue(10);
+            ShowHumeur(HumeurHeureux);
             GameManager.Instance.AjouterEnergie(10);
+        }
+        else
+        {
+            ShowHumeur(HumeurTriste);
+        }
         this.PositionSalle = null;
         return true;
     }
@@ -477,7 +485,10 @@ protected EtreVivant() {
         Debug.Log("displayasdasd");
         //TODO : Charger l'énergie si c'est une bonne humeur !
         if (humeur == EnumHumeur.HEUREUX)
+        {
+            UIManager.Instance.SetEnergyTextValue(10);
             GameManager.Instance.AjouterEnergie(10);
+        }
     }
 
     //Fonction à appeler sur tous les EtreVivant tout le temps
@@ -548,6 +559,7 @@ protected EtreVivant() {
             }
             //TODO : afficher que l'animal est très content ; recharger l'énergie 
             ShowHumeur(HumeurHeureux);
+            UIManager.Instance.SetEnergyTextValue(10);
             GameManager.Instance.AjouterEnergie(10);
             Debug.Log("yes1");
             return true;
@@ -561,12 +573,14 @@ protected EtreVivant() {
                 Estomac = 10f;
             }
             //TODO : afficher que l'animal est moyen content
-            ShowHumeur(HumeurHeureux);
+            ShowHumeur(HumeurAmoureux);
+            UIManager.Instance.SetEnergyTextValue(5);
             GameManager.Instance.AjouterEnergie(5);
             Debug.Log("yes2");
             return true;
         }
 
+        ShowHumeur(HumeurTriste);
         return false;
     }
     #endregion
