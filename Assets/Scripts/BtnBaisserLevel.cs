@@ -10,7 +10,7 @@ public class BtnBaisserLevel : MonoBehaviour
     public float valueBaisserLevel = 5f;
     public void ClickBtn()
     {
-        if (!AnimalDataModel.isPause)
+        if (!AnimalDataModel.isPause && !GameManager.Instance.IsSleep)
         {
             Debug.Log("click");
             GameManager.Instance.UpdateSeaLevel(valueBaisserLevel);
