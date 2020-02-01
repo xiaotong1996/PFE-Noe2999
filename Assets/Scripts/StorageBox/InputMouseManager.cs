@@ -29,10 +29,10 @@ public class InputMouseManager : MonoBehaviour
                // Debug.Log(hit.collider.tag);
                 if(hit.collider.tag == "Food")
                 {
-                    StorageBoxManager.Instance.StoreItem(hit.collider.GetComponent<FoodInfo>().Name);
-                    //Debug.Log(hit.collider.name);
+                    //StorageBoxManager.Instance.StoreItem(hit.collider.GetComponent<FoodInfo>().Name);
+                    ////Debug.Log(hit.collider.name);
                     
-                    Destroy(hit.collider.gameObject);
+                    //Destroy(hit.collider.gameObject);
                 }
 
                 if(hit.collider.name == "Chest_Button")

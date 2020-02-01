@@ -16,4 +16,12 @@ public class FoodInfo : MonoBehaviour
     {
         
     }
+
+    private void OnMouseUp()
+    {
+        StorageBoxManager.Instance.StoreItem(Name);
+        //Debug.Log(hit.collider.name);
+
+        Destroy(gameObject);
+    }
 }

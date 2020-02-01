@@ -12,6 +12,7 @@ public class SalleAnimaux : Salle
     private List<EtreVivant> animaux;
     public List<EtreVivant> Animaux { get => animaux; set => animaux = value; }
 
+    public Transform centrePoint;
 
     public SalleAnimaux()
     {

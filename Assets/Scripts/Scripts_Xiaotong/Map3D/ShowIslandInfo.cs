@@ -9,7 +9,7 @@ public class ShowIslandInfo : MonoBehaviour
 {
     private GameObject vaisseau;
 
-    private GameObject uiPrefab;
+    public GameObject uiPrefab;
 
     private GameObject ui;
 
@@ -33,7 +33,7 @@ public class ShowIslandInfo : MonoBehaviour
     {
         uiPrefab = Resources.Load<GameObject>("Prefabs/UI/Map/IslandInfo");
 
-        ui = gameObject.transform.GetChild(5).gameObject;
+        //ui = gameObject.transform.GetChild(5).gameObject;
 
         //Fetch the Raycaster from the GameObject (the Canvas)
         m_Raycaster = GetComponent<GraphicRaycaster>();
