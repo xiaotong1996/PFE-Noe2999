@@ -178,7 +178,7 @@ public class ShowIslandInfo : MonoBehaviour
                 if (ui != null && !lol)
                 {
                     ui.SetActive(false);
-                    print("lul");
+//                    print("lul");
                 }
             }
             

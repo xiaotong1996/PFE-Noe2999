@@ -34,8 +34,12 @@ public class OnDraggable : MonoBehaviour
         //Debug.Log("down1");
         //if(draggable)
         //{ 
-        if(!AnimalDataModel.isPause)
+        if (!AnimalDataModel.isPause)
+        {
             originalPosition = transform.position;
+            transform.localScale *= new Vector2(1.5f, 1.5f);
+            GetComponent<SpriteRenderer>().material.SetFloat("_Thickness", 20);
+        }
            // Debug.Log("down");
         //}
     }
@@ -94,6 +98,8 @@ public class OnDraggable : MonoBehaviour
         //Debug.Log("Up");
         if (!AnimalDataModel.isPause)
         {
+            transform.localScale /= new Vector2(1.5f,1.5f);
+            GetComponent<SpriteRenderer>().material.SetFloat("_Thickness", 0);
             if (container == null && draggable)
             {
 
