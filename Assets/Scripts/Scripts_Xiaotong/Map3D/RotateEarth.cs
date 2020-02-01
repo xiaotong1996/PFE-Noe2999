@@ -12,7 +12,7 @@ public class RotateEarth : MonoBehaviour
 
     void Update()
     {
-        if (sii == null) sii = GameObject.Find("Canvas").GetComponent<ShowIslandInfo>();
+        if (sii == null && SceneDataModel.curscene == "Map3D") sii = GameObject.Find("Canvas").GetComponent<ShowIslandInfo>();
         
         //If you want to prevent rotation, just don't call this method
         if(!GameManager.Instance.IsSleep)
