@@ -14,6 +14,7 @@ public class OnDraggable : MonoBehaviour
     public Camera camera;
     private EtreVivant animal;
     private int destination = -1; // -1-> no destination  0->room    1->island
+    bool isDrag = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,10 +54,11 @@ public class OnDraggable : MonoBehaviour
         //else
         //{
         //Debug.Log(gameObject.name);
+        isDrag = true;
         if (!AnimalDataModel.isPause)
-            transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y,-0.5f);
-        
-        //}
+        {             transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y,-0.5f);
+           
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -84,14 +86,35 @@ public class OnDraggable : MonoBehaviour
                 container = collision.gameObject;
                 destination = 0;
 
-                //ToDO afficher peur 
-                SalleAnimaux salle = collision.GetComponent<SalleAnimaux>();
-                EtreVivant animal = gameObject.GetComponent<EtreVivant>();
-                if (!animal.CanInThisRoom(salle))
+                //ToDO afficher peur
+                if (isDrag)
                 {
-                    animal.ShowHumeur(animal.HumeurTriste);
+                    Debug.Log("asd");
+                    SalleAnimaux salle = collision.GetComponent<SalleAnimaux>();
+                    EtreVivant animal = gameObject.GetComponent<EtreVivant>();
+                    if (!animal.CanInThisRoom(salle))
+                    {
+                        animal.ShowHumeur(animal.HumeurTriste);
+                    }
+                    else
+                    { if (salle.Animaux.Count != 0)
+                        {
+                            foreach (var i in salle.Animaux)
+                            {
+                                if ( animal.Race == i.Race)
+                                {
+
+                                    animal.ShowHumeur(animal.HumeurAmoureux);
+                                    if (i.gameObject == null)
+                                    {
+                                        Debug.Log("show");
+                                    }
+                                    i.ShowHumeur(i.HumeurAmoureux);
+                                }
+                            }
+                        }
+                    }
                 }
-                
                 //Debug.Log("enter");
             }
             else if (collision.tag == "Ile")
@@ -105,8 +128,10 @@ public class OnDraggable : MonoBehaviour
     private void OnMouseUp()
     {
         //Debug.Log("Up");
+        isDrag = false;
         if (!AnimalDataModel.isPause)
         {
+            
             transform.localScale /= new Vector2(1.5f,1.5f);
             GetComponent<SpriteRenderer>().material.SetFloat("_Thickness", 0);
             if (container == null && draggable)

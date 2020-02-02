@@ -67,39 +67,75 @@ public class Vaisseau : MonoBehaviour
             Transform salleTransform = pair.Value.transform;
             
             SalleAnimaux s = pair.Value;
-            foreach(var a in s.Animaux)
+
+
+            for(int i = 0; i < s.Animaux.Count; i++)
             {
+
                 float x = Random.Range(-0.5f, 0.5f) + salleTransform.position.x;
 
                 float y = Random.Range(-0.5f, 0.5f) + salleTransform.position.y;
                 Vector3 pos = new Vector3(x, y, -0.5f);
                 GameObject prefab = (GameObject)Resources.Load("Prefabs/Animals/cat");
-                if (a.Race == EnumRace.CHAT)
-                     prefab = (GameObject)Resources.Load("Prefabs/Animals/cat");
-                else if(a.Race == EnumRace.CHIEN)
+                if (s.Animaux[i].Race == EnumRace.CHAT)
+                    prefab = (GameObject)Resources.Load("Prefabs/Animals/cat");
+                else if (s.Animaux[i].Race == EnumRace.CHIEN)
                     prefab = (GameObject)Resources.Load("Prefabs/Animals/dog");
-                else if (a.Race == EnumRace.LION)
+                else if (s.Animaux[i].Race == EnumRace.LION)
                     prefab = (GameObject)Resources.Load("Prefabs/Animals/lion");
-                else if (a.Race == EnumRace.POULE)
+                else if (s.Animaux[i].Race == EnumRace.POULE)
                     prefab = (GameObject)Resources.Load("Prefabs/Animals/hen");
-                else if (a.Race == EnumRace.ZEBRE)
+                else if (s.Animaux[i].Race == EnumRace.ZEBRE)
                     prefab = (GameObject)Resources.Load("Prefabs/Animals/zebra");
-               
+
                 GameObject tmp = Instantiate(prefab, pos, Quaternion.identity);
-                Debug.Log(a.Id + "value");
+//                Debug.Log(s.Animaux[i].Id + "value");
                 EtreVivant e = tmp.GetComponent<EtreVivant>();
                 //Debug.Log(e.Fatigue + " "+"value");
-                
+
                 tmp.transform.SetParent(s.transform);
-                e.EtreVivantCopy(a);
+                e.EtreVivantCopy(s.Animaux[i]);
                 e.PositionSalle = s;
-               e.Id = a.Id;
-                Debug.Log(tmp.GetComponent<EtreVivant>().Id + " " + "value2e");
-
-
+                e.Id = s.Animaux[i].Id;
+                s.Animaux[i] = e;
+                //Debug.Log(tmp.GetComponent<EtreVivant>().Id + " " + "value2e");
 
 
             }
+            //foreach (var a in s.Animaux)
+            //{
+            //    float x = Random.Range(-0.5f, 0.5f) + salleTransform.position.x;
+
+            //    float y = Random.Range(-0.5f, 0.5f) + salleTransform.position.y;
+            //    Vector3 pos = new Vector3(x, y, -0.5f);
+            //    GameObject prefab = (GameObject)Resources.Load("Prefabs/Animals/cat");
+            //    if (a.Race == EnumRace.CHAT)
+            //         prefab = (GameObject)Resources.Load("Prefabs/Animals/cat");
+            //    else if(a.Race == EnumRace.CHIEN)
+            //        prefab = (GameObject)Resources.Load("Prefabs/Animals/dog");
+            //    else if (a.Race == EnumRace.LION)
+            //        prefab = (GameObject)Resources.Load("Prefabs/Animals/lion");
+            //    else if (a.Race == EnumRace.POULE)
+            //        prefab = (GameObject)Resources.Load("Prefabs/Animals/hen");
+            //    else if (a.Race == EnumRace.ZEBRE)
+            //        prefab = (GameObject)Resources.Load("Prefabs/Animals/zebra");
+               
+            //    GameObject tmp = Instantiate(prefab, pos, Quaternion.identity);
+            //    Debug.Log(a.Id + "value");
+            //    EtreVivant e = tmp.GetComponent<EtreVivant>();
+            //    //Debug.Log(e.Fatigue + " "+"value");
+                
+            //    tmp.transform.SetParent(s.transform);
+            //    e.EtreVivantCopy(a);
+            //    e.PositionSalle = s;
+            //   e.Id = a.Id;
+            //    a = e;
+            //    Debug.Log(tmp.GetComponent<EtreVivant>().Id + " " + "value2e");
+
+
+
+
+            //}
             
         }
     }

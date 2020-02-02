@@ -67,7 +67,7 @@ public class AnimalMovement : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        Debug.Log("Exit");
+      
         if ( collision.tag == "Salle")
         {
             //dir.x = dir.x > 0 ? Random.Range(-10, 0) : Random.Range(0, 10);
