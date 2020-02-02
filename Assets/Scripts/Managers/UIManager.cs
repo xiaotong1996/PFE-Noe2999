@@ -27,7 +27,12 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
-        seaLevelSlider = GameObject.Find("Sealevel_Slider").GetComponent<Slider>();
+        try
+        {
+            seaLevelSlider = GameObject.Find("Sealevel_Slider").GetComponent<Slider>();
+        }
+        catch { }
+
         energySlider = GameObject.Find("Energy_Slider").GetComponent<Slider>();
         energy_Text = GameObject.Find("Energy_Text").GetComponent<Text>();
     }
@@ -55,19 +60,19 @@ public class UIManager : MonoBehaviour
     }
     public void SetSeaLevelMax(float value)
     {
-        seaLevelSlider.maxValue = value;
+        if (seaLevelSlider != null) seaLevelSlider.maxValue = value;
     }
 
     public void SetEnergyMax(float value)
     {
-        energySlider.maxValue = value;
+         energySlider.maxValue = value;
     }
 
     public void UpdateSeaLevel(float value)
     {
 
 
-        seaLevelSlider.value = value;
+        if (seaLevelSlider != null) seaLevelSlider.value = value;
         //Debug.Log("seaLevelSlider.value" + seaLevelSlider.value);
     }
 

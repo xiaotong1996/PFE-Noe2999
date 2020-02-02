@@ -1,17 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InputMouseManager : MonoBehaviour
 {
-    bool isOpen = false;
+    bool isOpen = true;
     public GameObject Panel;
 
        // Start is called before the first frame update
     void Start()
     {
         Panel = GameObject.Find("StorageBoxUI").transform.Find("GridPanel").gameObject;
-        Panel.SetActive(false);
+        Panel.SetActive(true);
        
     }
 
@@ -19,6 +20,13 @@ public class InputMouseManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (SceneManager.GetActiveScene().name == "vaiseau_Ile" || SceneManager.GetActiveScene().name == "Vaisseau"     )
+        {
+            Panel.SetActive(true);
+        }
+
+        else Panel.SetActive(false);
+
         if (Input.GetMouseButtonDown(0))
         {
             //Debug.Log("click");
@@ -40,6 +48,8 @@ public class InputMouseManager : MonoBehaviour
                     isOpen = !isOpen;
                     Panel.SetActive(isOpen);
                 }
+
+
 
             }
         }
