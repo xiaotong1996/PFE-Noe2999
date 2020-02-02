@@ -69,10 +69,18 @@ public class ButtonBehaviour : MonoBehaviour
                 Image_6.SetActive(false);
                 IsActive = 1;
                 //if(SceneDataModel.lastScene)
-                if(SceneDataModel.flagForIntroduction == "menu")
+                if (SceneDataModel.flagForIntroduction == "menu")
+                {
                     SceneManager.LoadScene("Start");
-                else if(SceneDataModel.flagForIntroduction == "play")
+                    SceneDataModel.curscene = "Menu";
+                    SceneDataModel.lastScene = "Introduction";
+                }
+                else if (SceneDataModel.flagForIntroduction == "play")
+                {
                     SceneManager.LoadScene("Map3D");
+                    SceneDataModel.curscene = "Map3D";
+                    SceneDataModel.lastScene = "Introduction";
+                }
                 //TODO : appeler la scène qui convient (soit le menu soit la nouvelle partie)
             }
         }

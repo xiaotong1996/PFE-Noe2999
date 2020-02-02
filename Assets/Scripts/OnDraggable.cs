@@ -85,12 +85,13 @@ public class OnDraggable : MonoBehaviour
                 destination = 0;
 
                 //ToDO afficher peur 
-                //SalleAnimaux salle = collision.GetComponent<SalleAnimaux>();
-                //EtreVivant animal = gameObject.GetComponent<EtreVivant>();
-                //if (!animal.CanInThisRoom(salle))
-                //{
-                    
-                //}
+                SalleAnimaux salle = collision.GetComponent<SalleAnimaux>();
+                EtreVivant animal = gameObject.GetComponent<EtreVivant>();
+                if (!animal.CanInThisRoom(salle))
+                {
+                    animal.ShowHumeur(animal.HumeurTriste);
+                }
+                
                 //Debug.Log("enter");
             }
             else if (collision.tag == "Ile")

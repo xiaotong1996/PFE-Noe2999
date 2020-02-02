@@ -453,7 +453,7 @@ protected EtreVivant() {
         return resultat;
     }
 
-    private void ShowHumeur(Sprite humeur)
+    public void ShowHumeur(Sprite humeur)
     {
         spriteRenderer.sprite = humeur;
         spriteRenderer.enabled = true;
@@ -525,9 +525,14 @@ protected EtreVivant() {
                 // problème : ça risque de ne pas se recharger si je quitte l'application !
                 ShowHumeur(HumeurDodo);
                 Fatigue += 0.3f;
+                Estomac += 0.3f;
                 if (Fatigue > 10f)
                 {
                     Fatigue = 10f;
+                }
+                if (Estomac > 10f)
+                {
+                    Estomac = 10f;
                 }
             }          
         }

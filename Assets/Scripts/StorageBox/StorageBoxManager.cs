@@ -83,7 +83,7 @@ public class StorageBoxManager : MonoBehaviour
 
        
         EtreVivant animal ;
-        if (hit.collider!=null)
+        if (hit.collider != null && hit.collider.tag == "EtreVivant" )
         {
             animal = hit.transform.GetComponent<EtreVivant>();
             if (animal != null)
@@ -101,7 +101,7 @@ public class StorageBoxManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("nothing happened");
+                    Debug.Log("nothing happened1");
                     if (preGrid.childCount == 0)
                     {
                         InitNewItem(item, preGrid);
@@ -123,7 +123,7 @@ public class StorageBoxManager : MonoBehaviour
 
 
 
-            Debug.Log("nothing happened");
+            Debug.Log("nothing happened2");
             if (preGrid.childCount == 0)
             {
                 InitNewItem(item, preGrid);
