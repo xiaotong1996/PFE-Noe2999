@@ -8,15 +8,12 @@ public class RotateEarth : MonoBehaviour
     Ray r;
     RaycastHit rh;
     public MoveOnEarth moveOnEarth;
-    public ShowIslandInfo sii;
 
+    float mouseKeyTime = 0;
     void Update()
     {
-        Debug.Log("aaaaaaa"+SceneDataModel.curscene);
-        if (sii == null && SceneDataModel.curscene == "Map3D") sii = GameObject.Find("Canvas").GetComponent<ShowIslandInfo>();
-        
         //If you want to prevent rotation, just don't call this method
-        if(!GameManager.Instance.IsSleep)
+        if (!GameManager.Instance.IsSleep)
             RotateObject();
     }
 
@@ -25,12 +22,24 @@ public class RotateEarth : MonoBehaviour
         r = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(r, out rh, 1000))
         {
-            if (rh.collider.gameObject.tag == "Earth" && !moveOnEarth.IsMove && !sii.lol)
+            if (rh.collider.gameObject.tag == "Earth" && !moveOnEarth.IsMove)
             {
+                if (Input.GetMouseButtonUp(0))
+                {
+                    mouseKeyTime = 0;
+                }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    mouseKeyTime = 0;
+                }
+
                 if (Input.GetMouseButton(0))
                 {
-                    transform.Rotate((Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime), (Input.GetAxis("Mouse X") * rotationSpeed * -Time.deltaTime), 0, Space.World);
+                    mouseKeyTime += Time.deltaTime;
+                    if (mouseKeyTime > 0.15f)
+                        transform.Rotate((Input.GetAxis("Mouse Y") * rotationSpeed * Time.deltaTime), (Input.GetAxis("Mouse X") * rotationSpeed * -Time.deltaTime), 0, Space.World);
                 }
+
             }
         }
     }

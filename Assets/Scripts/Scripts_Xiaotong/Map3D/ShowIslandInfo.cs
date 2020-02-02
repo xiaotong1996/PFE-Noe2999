@@ -9,7 +9,7 @@ public class ShowIslandInfo : MonoBehaviour
 {
     private GameObject vaisseau;
 
-    public GameObject uiPrefab;
+    private GameObject uiPrefab;
 
     private GameObject ui;
 
@@ -18,7 +18,6 @@ public class ShowIslandInfo : MonoBehaviour
     private GameObject island;
 
     private bool buttonClicked;
-    public bool lol;
 
     private string islandDestinationName;
 
@@ -33,7 +32,7 @@ public class ShowIslandInfo : MonoBehaviour
     {
         uiPrefab = Resources.Load<GameObject>("Prefabs/UI/Map/IslandInfo");
 
-        //ui = gameObject.transform.GetChild(5).gameObject;
+        //ui = gameObject.transform.GetChild(0).gameObject;
 
         //Fetch the Raycaster from the GameObject (the Canvas)
         m_Raycaster = GetComponent<GraphicRaycaster>();
@@ -52,11 +51,12 @@ public class ShowIslandInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!ui.enable) lol = false;
-        if (Input.GetMouseButtonDown(0))
+
+#if true  //UNITY_ANDROID || UNITY_IPHONE
+        if (Input.touchCount > 0)
         {
-            
-            if (EventSystem.current.currentSelectedGameObject != null&&EventSystem.current.IsPointerOverGameObject())
+
+            if (EventSystem.current.currentSelectedGameObject != null && ClickIsOverUI.Instance.IsPointerOverUIObject(Input.GetTouch(0).fingerId))
             {
 
                 //Debug.Log(EventSystem.current.currentSelectedGameObject.gameObject.name);
@@ -75,17 +75,16 @@ public class ShowIslandInfo : MonoBehaviour
                 //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
                 foreach (RaycastResult result in results)
                 {
-                    if (result.gameObject.name == "Button_OK" && !buttonClicked )
+                    if (result.gameObject.name == "Button_OK" && !buttonClicked)
                     {
                         OnButtonOKClicked();
                         buttonClicked = true;
                     }
-                    if(result.gameObject.name == "Button_Cancel")
+                    if (result.gameObject.name == "Button_Cancel")
                     {
-                        //ui.SetActive(false);
-                        print("lol");
+                        ui.SetActive(false);
                     }
-                 
+
                 }
 
             }
@@ -95,8 +94,8 @@ public class ShowIslandInfo : MonoBehaviour
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
-   
-                
+
+
                     if (hit.transform.tag == "Island")
                     {
                         island = hit.transform.gameObject;
@@ -105,8 +104,81 @@ public class ShowIslandInfo : MonoBehaviour
                     {
                         island = null;
                     }
-                
-                
+
+
+                }
+
+            }
+
+            ////使用方法二：传递触摸手势坐标
+            //if (ClickIsOverUI.Instance.IsPointerOverUIObject(Input.GetTouch(0).position))
+            //{
+            //    Debug.Log("方法二： 点击在UI 上");
+            //}
+
+            ////使用方法三：传递画布组件，传递触摸手势坐标
+            //if (ClickIsOverUI.Instance.IsPointerOverUIObject(GetComponent<Canvas>(), Input.GetTouch(0).position))
+            //{
+            //    Debug.Log("方法三： 点击在UI 上");
+            //}
+        }
+#endif
+
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            if (EventSystem.current.currentSelectedGameObject != null && EventSystem.current.IsPointerOverGameObject())
+            {
+
+                //Debug.Log(EventSystem.current.currentSelectedGameObject.gameObject.name);
+                //Set up the new Pointer Event
+                m_PointerEventData = new PointerEventData(m_EventSystem);
+                //Set the Pointer Event Position to that of the mouse position
+                m_PointerEventData.position = Input.mousePosition;
+
+                //Create a list of Raycast Results
+                List<RaycastResult> results = new List<RaycastResult>();
+
+                //Raycast using the Graphics Raycaster and mouse click position
+                m_Raycaster.Raycast(m_PointerEventData, results);
+
+
+                //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+                foreach (RaycastResult result in results)
+                {
+                    if (result.gameObject.name == "Button_OK" && !buttonClicked)
+                    {
+                        OnButtonOKClicked();
+                        buttonClicked = true;
+                    }
+                    if (result.gameObject.name == "Button_Cancel")
+                    {
+                        ui.SetActive(false);
+                    }
+
+                }
+
+            }
+            else
+            {
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit))
+                {
+
+
+                    if (hit.transform.tag == "Island")
+                    {
+                        island = hit.transform.gameObject;
+                    }
+                    else
+                    {
+                        island = null;
+                    }
+
+
                 }
 
             }
@@ -116,21 +188,19 @@ public class ShowIslandInfo : MonoBehaviour
 
         var IslandChosenName = vaisseau.GetComponent<MoveOnEarth>().IslandChosenName;
         //if (IslandChosenName == GetComponent<Destination>().Name)
-        if (island != null && island.GetComponent<Destination>().Name== IslandChosenName)
+        if (island != null && island.GetComponent<Destination>().Name == IslandChosenName)
         {
 
-            if ( vaisseau != null && island.GetComponent<Destination>().Name.Equals( vaisseau.GetComponent<CheckArrived>().IslandStayName))
+            if (vaisseau != null && island.GetComponent<Destination>().Name.Equals(vaisseau.GetComponent<CheckArrived>().IslandStayName))
             {
                 if (ui != null)
                 {
                     ui.SetActive(false);
-                    lol = false;
-                    print("lal");
                 }
             }
             else
             {
-                if( vaisseau != null && !vaisseau.GetComponent<MoveOnEarth>().IsMove)
+                if (vaisseau != null && !vaisseau.GetComponent<MoveOnEarth>().IsMove)
                 {
                     if (ui == null)
                     {
@@ -157,14 +227,13 @@ public class ShowIslandInfo : MonoBehaviour
                         //ChangeTitle(ecosystemTitle, destination.Ecosysteme.EcosystemeType);
 
                         ui.transform.position = island.transform.position;
-                        lol = true;
                         ui.SetActive(true);
                     }
                 }
-                
+
             }
 
-            
+
 
         }
         else
@@ -175,13 +244,12 @@ public class ShowIslandInfo : MonoBehaviour
             }
             else
             {
-                if (ui != null && !lol)
+                if (ui != null)
                 {
                     ui.SetActive(false);
-//                    print("lul");
                 }
             }
-            
+
         }
     }
 
@@ -237,11 +305,9 @@ public class ShowIslandInfo : MonoBehaviour
 
     public void OnButtonCancelClicked()
     {
-        /*
         Debug.Log("cancel is called");
         if (ui != null)
             ui.SetActive(false);
-            */
     }
 
     public void OnButtonOKClicked()
@@ -252,9 +318,7 @@ public class ShowIslandInfo : MonoBehaviour
 
         //IslandDestinationName = island.GetComponent<Destination>().Name;
         buttonClicked = false;
-        lol = false;
         if (ui != null)
             ui.SetActive(false);
-            
     }
 }

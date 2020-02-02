@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 49229b281cee84bedbbe01bee6c556cc
   - enabled: 1
+    path: Assets/Scenes/Map3D.unity
+    guid: a7654795a175fc946a02be2d8f73ceb8
+  - enabled: 1
     path: Assets/Scenes/vaiseau_Ile.unity
     guid: 6e1b94154aa46470789108b8bf42bc24
   - enabled: 1
     path: Assets/Scenes/Vaisseau.unity
     guid: c8dd0f5149686bd4aa544461885ec56c
-  - enabled: 1
-    path: Assets/Scenes/Map3D.unity
-    guid: a7654795a175fc946a02be2d8f73ceb8
   - enabled: 1
     path: Assets/Scenes/Introduction.unity
     guid: ea5599ad57a81e646ac18aa0e6c6e912
