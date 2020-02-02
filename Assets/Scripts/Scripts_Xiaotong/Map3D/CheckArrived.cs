@@ -21,6 +21,7 @@ public class CheckArrived : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Destination>().Name.Equals( moveOnEarth.IslandChosenName))
         {
+            Debug.Log(moveOnEarth.IslandChosenName);
             IsArrived = true;
             DestinationStay = other.gameObject;
             if(DestinationStay!=null)

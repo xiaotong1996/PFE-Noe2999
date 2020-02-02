@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45114994, g: 0.499766, b: 0.56766325, a: 1}
+  m_IndirectSpecularColor: {r: 0.4511503, g: 0.4997667, b: 0.5676641, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1580,8 +1580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef12c822b5d4844c989f3abfd6654a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 2060701205}
-  lol: 0
 --- !u!1 &1159057161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,26 +2835,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8653601613416754456, guid: 941cdac24745241a994ebdef356ce4fb,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.0001373291
-      objectReference: {fileID: 0}
-    - target: {fileID: 8653601613416754456, guid: 941cdac24745241a994ebdef356ce4fb,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -34.013
-      objectReference: {fileID: 0}
-    - target: {fileID: 8653601614854139838, guid: 941cdac24745241a994ebdef356ce4fb,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.5999985
-      objectReference: {fileID: 0}
-    - target: {fileID: 8653601614854139838, guid: 941cdac24745241a994ebdef356ce4fb,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 4.899994
-      objectReference: {fileID: 0}
     - target: {fileID: 4464581982743180934, guid: 941cdac24745241a994ebdef356ce4fb,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -2886,6 +2864,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653601613416754456, guid: 941cdac24745241a994ebdef356ce4fb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0001373291
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653601613416754456, guid: 941cdac24745241a994ebdef356ce4fb,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -34.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653601614854139838, guid: 941cdac24745241a994ebdef356ce4fb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.5999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653601614854139838, guid: 941cdac24745241a994ebdef356ce4fb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.899994
       objectReference: {fileID: 0}
     - target: {fileID: 3345493701014857606, guid: 941cdac24745241a994ebdef356ce4fb,
         type: 3}
@@ -3055,12 +3053,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041350738}
   m_CullTransparentMesh: 0
---- !u!1 &2060701205 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4221041131610722361, guid: e2abcd3faaf67074a88ae0f19f6a173e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1166001880}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &510425525225678969
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -100,11 +100,12 @@ public class MoveOnEarth : MonoBehaviour
             if (IsMove)
             {
                 Move();
+                gameObject.GetComponent<CheckArrived>().IsOnLand = false;
                 GameManager.Instance.ConsommerEnergie(energyConsomePerFrame * Time.deltaTime);
             }
-
             else
             {
+                //gameObject.GetComponent<CheckArrived>().IsOnLand = true;
                 GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
         }
