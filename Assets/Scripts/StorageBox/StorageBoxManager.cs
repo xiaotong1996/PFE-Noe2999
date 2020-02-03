@@ -60,7 +60,7 @@ public class StorageBoxManager : MonoBehaviour
         {
             
             Item item = BoxDataModel.GetItem(gridTransform.name);
-            Debug.Log(item.Icon);
+            //Debug.Log(item.Icon);
             DragItem.UpdateImage(item.Icon);
             //DragItem.UpdateText(item.Number);
             BoxDataModel.ReduceItem(gridTransform.name, item);
@@ -97,6 +97,12 @@ public class StorageBoxManager : MonoBehaviour
                     //BoxDataModel.DeleteItem
                     //TODO
                     
+                    if (item.Number == 0)
+                    {
+                        Debug.Log("store001 delete");
+                      
+                        BoxDataModel.ReduceItem(preGrid.name, item);
+                    }
                     Debug.Log(hit.collider.name + "eats the " + item.Name + "!");
                 }
                 else
@@ -104,6 +110,7 @@ public class StorageBoxManager : MonoBehaviour
                     Debug.Log("nothing happened1");
                     if (preGrid.childCount == 0)
                     {
+                        Debug.Log("store001 init");
                         InitNewItem(item, preGrid);
                     }
 
@@ -134,7 +141,8 @@ public class StorageBoxManager : MonoBehaviour
             preGrid.GetChild(0).GetComponent<ItemUI>().UpdateText(item.Number);
 
         }
-
+        //Debug.Log("store " + gridName);
+        
 
 
 
@@ -169,8 +177,8 @@ public class StorageBoxManager : MonoBehaviour
 
     public void StoreItem(string itemName)
     {
-
-        if(!ItemList.ContainsKey(itemName))
+        //Debug.Log("storeD");
+        if (!ItemList.ContainsKey(itemName))
         {
             Debug.LogWarning("Doesn't exist this id");
             return;
@@ -180,8 +188,10 @@ public class StorageBoxManager : MonoBehaviour
         Item itemStored = ItemList[itemName];
         string gridName = BoxDataModel.FindGrid(ItemList[itemName].Name);
         Transform parentGrid;
+      
         if (gridName != null)
         {
+            //Debug.Log("storeA");
             GameObject canav = GameObject.Find("StorageBoxUI");
             GameObject gridpanel = canav.transform.Find("GridPanel").gameObject;
             parentGrid = gridpanel.transform.Find(gridName);
@@ -191,6 +201,7 @@ public class StorageBoxManager : MonoBehaviour
         }
         else
         {
+            //Debug.Log("storeB");
             parentGrid = m_GridPanelUI.GetFirstEmptyGrid();
 
             if (parentGrid == null)
@@ -198,19 +209,21 @@ public class StorageBoxManager : MonoBehaviour
                 Debug.LogWarning("box is full");
                 return;
             }
+            //Debug.Log("storef " + itemStored.Number);
+            if (itemStored.Number == 0) itemStored.Number = 1;
             InitNewItem(itemStored, parentGrid);
         }
 
-        
 
-        
-        
+
     }
 
     private void InitNewItem(Item item, Transform parent)
     {
         GameObject itemPre = Resources.Load<GameObject>("Prefabs/UI/StorageBox/Item");
         itemPre.GetComponent<ItemUI>().UpdateImage(item.Icon);
+        //item.Number = 1;
+        //Debug.Log("storeE " + item.Number);
         itemPre.GetComponent<ItemUI>().UpdateText(item.Number);
          GameObject itemGO = Instantiate(itemPre);
         itemGO.transform.SetParent(parent);

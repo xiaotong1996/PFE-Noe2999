@@ -24,18 +24,26 @@ public static class BoxDataModel
 
     public static void AddItem(string gridName, Item item)
     {
+        //Debug.Log("store002 " + GridItem[gridName].Number);
         if (GridItem.ContainsKey(gridName))
             GridItem[gridName].Number++;
     }
 
     public static void ReduceItem(string gridName, Item item)
     {
+        //Debug.Log("store001 " + GridItem[gridName].Number);
         if (GridItem.ContainsKey(gridName))
         {
             if (GridItem[gridName].Number > 0)
                 GridItem[gridName].Number--;
             else
+            {
+
                 DeleteItem(gridName);
+                
+                //Debug.Log("store00 " + GridItem.Count);
+            }
+            //Debug.Log("store00 " + GridItem[gridName].Number);
         }
     }
 

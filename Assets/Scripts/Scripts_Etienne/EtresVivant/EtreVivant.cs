@@ -521,7 +521,7 @@ protected EtreVivant() {
             }
             else
             {
-                Debug.Log("trueeeeeee");
+              
                 // problème : ça risque de ne pas se recharger si je quitte l'application !
                 ShowHumeur(HumeurDodo);
                 Fatigue += 0.3f;
@@ -554,7 +554,7 @@ protected EtreVivant() {
     //à appeler quand le joueur donne de la nourriture à un animal,^prend en paramètre la nourriture donnée
     public bool NourrirAnimal(NourritureType nourriture)
     {
-        Debug.Log("yes3");
+        //Debug.Log("yes3");
         if (nourriture == NourritureFavorite)
         {
             Estomac += 5f;
@@ -566,7 +566,7 @@ protected EtreVivant() {
             ShowHumeur(HumeurHeureux);
             UIManager.Instance.SetEnergyTextValue(10);
             GameManager.Instance.AjouterEnergie(10);
-            Debug.Log("yes1");
+            //Debug.Log("yes1");
             return true;
 
         }
@@ -581,7 +581,7 @@ protected EtreVivant() {
             ShowHumeur(HumeurAmoureux);
             UIManager.Instance.SetEnergyTextValue(5);
             GameManager.Instance.AjouterEnergie(5);
-            Debug.Log("yes2");
+            //Debug.Log("yes2");
             return true;
         }
 

@@ -20,7 +20,7 @@ public class FoodInfo : MonoBehaviour
     private void OnMouseUp()
     {
         StorageBoxManager.Instance.StoreItem(Name);
-        //Debug.Log(hit.collider.name);
+        Debug.Log("storeC");
 
         Destroy(gameObject);
     }
