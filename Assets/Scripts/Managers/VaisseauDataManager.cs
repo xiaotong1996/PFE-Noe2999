@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This is a class to save information about the animals on the boat
+/// </summary>
 public class VaisseauDataManager : MonoBehaviour
 {
     private Dictionary<EtreVivant, int> dataModel = AnimalDataModel.GetDataModel();
@@ -20,6 +23,10 @@ public class VaisseauDataManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update the information about the animals each frame
+    /// </summary>
+    /// <param name="animal"></param>
     private void TempsQuiPasse( EtreVivant animal)
     {
        

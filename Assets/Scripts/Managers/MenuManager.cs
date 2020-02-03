@@ -4,9 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class is to manage the menu function which contain:
+/// Control the volume of the music and the sound
+/// Show the infomation of each animal
+/// Check the tutorial
+/// </summary>
 public class MenuManager : MonoBehaviour
 {
+    // Image of the animals
     public Image icon;
+    // Description of the animals
     public Text description;
     
     int idx = 0;
@@ -16,21 +24,21 @@ public class MenuManager : MonoBehaviour
 
     
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Initialisation informations
+    /// </summary>
     void Start()
     {
+        
         InitResources();
-      
         icon.sprite = Resources.Load(icons[0], typeof(Sprite)) as Sprite;
         description.text = des[0];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+  
+    /// <summary>
+    /// To help change the animal
+    /// </summary>
     public void LeftBtnClick()
     {
         SoundManager.Instance.PlayAudioByName("click");
@@ -42,6 +50,9 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// To help change the animal
+    /// </summary>
     public void RightBtnClick()
     {
         SoundManager.Instance.PlayAudioByName("click");
@@ -52,6 +63,10 @@ public class MenuManager : MonoBehaviour
             description.text = des[idx];
         }
     }
+
+    /// <summary>
+    /// Initialisation the animals information
+    /// </summary>
     void InitResources()
     {
         des.Add("Ne s'entend pas avec les chiens ! [Vous ne pouvez pas le placer dans la même salle qu'un chien]");
@@ -69,13 +84,19 @@ public class MenuManager : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// change scene
+    /// </summary>
+    /// <param name="name">the scene name</param>
     public void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
 
     }
 
+    /// <summary>
+    /// Quit the games
+    /// </summary>
     public void Exit()
     {
        

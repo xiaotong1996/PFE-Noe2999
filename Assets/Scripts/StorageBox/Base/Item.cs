@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class is to save the information for item that can be put int the stored bo
+/// </summary>
 public class Item 
 {
     public int Id { get; private set; }

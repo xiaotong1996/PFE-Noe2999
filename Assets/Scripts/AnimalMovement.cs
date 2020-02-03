@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Create animal's random move within a certain range
+/// </summary>
 public class AnimalMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // move speed
     public float speed = 1f;
+    // move direction
     public Vector2 dir;
-    public int index;
+    // timer to decide move  or stop move
     public float timer;
+    // animal is moving or not
     public bool isMove;
     
 
     void Start()
     {
         speed = 0.3f;
+        // give a random direction
         dir = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10));
         timer = 0;
         isMove = true;
@@ -28,6 +34,7 @@ public class AnimalMovement : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > 2.5)
             {
+                // change animal's statement (move or not)
                 ChangeState();
             }
 
@@ -36,6 +43,7 @@ public class AnimalMovement : MonoBehaviour
                 Vector2 tmp = dir.normalized * speed * Time.deltaTime;
                 transform.localPosition += new Vector3(tmp.x, tmp.y, 0);
             }
+            // if the animal is in the room, change the speed 
             if (GetComponent<EtreVivant>().PositionSalle != null)
             {
                 speed = 0.3f;
@@ -43,6 +51,9 @@ public class AnimalMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// To change animal's statement (move or not) in a random way each 2.5s
+    /// </summary>
     void ChangeState()
     {
         int value = Random.Range(0, 2);
@@ -63,11 +74,14 @@ public class AnimalMovement : MonoBehaviour
 
         timer = 0;
     }
-
+    
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-      
+        ///<summary>
+        ///Try not let the animals move out of the colliders
+        ///</summary> 
         if ( collision.tag == "Salle")
         {
             //dir.x = dir.x > 0 ? Random.Range(-10, 0) : Random.Range(0, 10);

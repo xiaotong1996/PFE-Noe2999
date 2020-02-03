@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// This class is a singleton, to several data global
+/// </summary>
 public class GameManager : MonoBehaviour
 {
    
@@ -22,8 +25,7 @@ public class GameManager : MonoBehaviour
     private int date = 0;
 
     //new
-    [SerializeField]
-    private float speedSeaLevel = 0.5f; //la vitesse pour controller le sealevel augmenter ou desendre
+   
     [SerializeField]
     private int energiemax = 100;
     public int Energiemax { get => energiemax; private set => energiemax = value; }
@@ -37,9 +39,7 @@ public class GameManager : MonoBehaviour
 
     public Carte Carte { get => carte; set => carte = value; }
     public GameObject JoueurDestination { get => joueurDestination; set => joueurDestination = value; }
-   
-   // private float SeaLevel  { get => seaLevel; set => seaLevel = value; }
-    public int Date { get => date; set => date = value; }
+
     public float SeaLevel { get => seaLevel; set => seaLevel = value; }
 
     public bool IsSleep = false;
@@ -75,9 +75,7 @@ public class GameManager : MonoBehaviour
         heartContainerObject = GameObject.Find("heartContainer");
         if (heartContainerObject != null) heartContainer = heartContainerObject.transform;          
 
-        //UpdateSeaLevel();
-        //Debug.Log("gamemamanger" + seaLevel);
-        //UIDataModel.SetSeaLevel(seaLevel);
+        // To update sea level UI and energy UI each frame 
         UIManager.Instance.SetSeaLevelMax(seaLevelMax);
         UIManager.Instance.UpdateSeaLevel(SeaLevel);
         UIManager.Instance.SetEnergyMax(Energiemax);
@@ -100,6 +98,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Add energy
+    /// </summary>
+    /// <param name="n_energie">the number of energy need to be added</param>
    public  void AjouterEnergie(float n_energie)
     {
         if (Energie == Energiemax)
@@ -114,7 +116,10 @@ public class GameManager : MonoBehaviour
             Energie += n_energie;
     }
 
-
+    /// <summary>
+    /// Use energy
+    /// </summary>
+    /// <param name="n_energie">the number of energy need to be used</param>
     public void ConsommerEnergie(float n_energie)
     {
         if (Energie == 0)
@@ -128,6 +133,11 @@ public class GameManager : MonoBehaviour
         else
             Energie -= n_energie;
     }
+
+    /// <summary>
+    /// Update sealevel data
+    /// </summary>
+    /// <param name="value"></param>
     public void UpdateSeaLevel(float value)
     {
 
@@ -136,27 +146,13 @@ public class GameManager : MonoBehaviour
         if (Energie >= 10)
         {
             seaLevel -= value;
-            //if (seaLevel > 1)
-            //    seaLevel -= speedSeaLevel * Time.deltaTime;
-
+          
             ConsommerEnergie(10);
         }
-        //if (SeaLevel > 0)
-        //    Debug.Log("WIN!");
 
-        //SeaLevel += speedSeaLevel * Time.deltaTime;
-        //if (SeaLevel < 0)
-        //    Debug.Log("LOSE!");
     }
 
-    /*
-     *@param nombre Ajouter combien de jour pour la date 
-     */
 
-    void UpdateDate(int nombre)
-    {
-        date += nombre;
-    }
 
     void GetDestination()
     {

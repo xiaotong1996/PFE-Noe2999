@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System;
 
+/// <summary>
+/// This class is to manage the storage box system
+/// </summary>
 public class StorageBoxManager : MonoBehaviour
 {
     public static StorageBoxManager _instance;
@@ -11,11 +14,6 @@ public class StorageBoxManager : MonoBehaviour
 
     public Dictionary<string, Item> ItemList = new Dictionary<string, Item>();
     public GridPanelUI m_GridPanelUI;
-  
-    
-
-   
-
     public DragItemUI DragItem;
 
     private bool isDrag = false;
@@ -35,20 +33,16 @@ public class StorageBoxManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        LoadItem();
-        //GridUI.OnEnter
-
-       
+        LoadItem(); 
         ReLoadBoxItem();
         GridUI.OnLeftBeginDrag += GridUI_OnLeftBeginDrag;
         GridUI.OnLeftEndDrag += GridUI_OnLeftEndDrag;
-
-       
-
     }
     
-
-
+    /// <summary>
+    /// Called automatiment when we start drag the item in the box
+    /// </summary>
+    /// <param name="gridTransform"></param>
     private void GridUI_OnLeftBeginDrag(Transform gridTransform)
     {
         if (gridTransform.childCount == 0)
@@ -71,7 +65,11 @@ public class StorageBoxManager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Called automatiment at  the end of drag the item in the box
+    /// </summary>
+    /// <param name="preGrid"></param>
+    /// <param name="CurPosition"></param>
     private void GridUI_OnLeftEndDrag(Transform preGrid, Transform CurPosition)
     {
         if (!isDrag) return;
@@ -94,24 +92,23 @@ public class StorageBoxManager : MonoBehaviour
                 
                 if (animal.NourrirAnimal(item.FoodType))
                 {
-                    //BoxDataModel.DeleteItem
-                    //TODO
+                    
                     
                     if (item.Number == 0)
                     {
-                        Debug.Log("store001 delete");
+                        
                       
                         BoxDataModel.ReduceItem(preGrid.name, item);
                     }
-                    Debug.Log(hit.collider.name + "eats the " + item.Name + "!");
+
                     GameManager.Instance.EnergieEffect(hit.collider.transform);
                 }
                 else
                 {
-                    Debug.Log("nothing happened1");
+                    
                     if (preGrid.childCount == 0)
                     {
-                        Debug.Log("store001 init");
+                      
                         InitNewItem(item, preGrid);
                     }
 
@@ -176,6 +173,10 @@ public class StorageBoxManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// To store item(information) in the box
+    /// </summary>
+    /// <param name="itemName"></param>
     public void StoreItem(string itemName)
     {
         //Debug.Log("storeD");
@@ -219,6 +220,12 @@ public class StorageBoxManager : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// The initialization the new item 
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="parent"></param>
     private void InitNewItem(Item item, Transform parent)
     {
         GameObject itemPre = Resources.Load<GameObject>("Prefabs/UI/StorageBox/Item");
@@ -237,6 +244,9 @@ public class StorageBoxManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Reload box information when we change the scenes 
+    /// </summary>
     private void ReLoadBoxItem()
     {
         Dictionary<string, Item> gridItem = BoxDataModel.GetGridITem();
@@ -263,6 +273,9 @@ public class StorageBoxManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initialisation the information of the food
+    /// </summary>
     private void LoadItem()
     {
         Food bone = new Food(0001, "Bone", " ", "Images/Foods/bone",1,

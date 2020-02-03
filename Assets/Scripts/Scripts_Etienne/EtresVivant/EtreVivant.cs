@@ -439,13 +439,6 @@ protected EtreVivant() {
                 resultat = EnumHumeur.AMOUREUX;
             }
         }
-        else
-        {
-            if (UnityEngine.Random.value >= 0.7)
-            {
-                resultat = EnumHumeur.TRISTE;
-            }
-        }
         if (fatigue == 0f)
         {
             resultat = EnumHumeur.FATIGUE;
@@ -563,7 +556,7 @@ protected EtreVivant() {
                 Estomac = 10f;
             }
             //TODO : afficher que l'animal est très content ; recharger l'énergie 
-            ShowHumeur(HumeurHeureux);
+            ShowHumeur(HumeurAmoureux);
             UIManager.Instance.SetEnergyTextValue(10);
             GameManager.Instance.AjouterEnergie(10);
             //Debug.Log("yes1");
@@ -578,7 +571,7 @@ protected EtreVivant() {
                 Estomac = 10f;
             }
             //TODO : afficher que l'animal est moyen content
-            ShowHumeur(HumeurAmoureux);
+            ShowHumeur(HumeurHeureux);
             UIManager.Instance.SetEnergyTextValue(5);
             GameManager.Instance.AjouterEnergie(5);
             //Debug.Log("yes2");
