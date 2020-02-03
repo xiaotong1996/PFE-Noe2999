@@ -3140,6 +3140,12 @@ PrefabInstance:
       propertyPath: energyAddPerFrame
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 510425525255663827, guid: 95d78c83428ad504eaf09d6c8516cc93,
+        type: 3}
+      propertyPath: heart
+      value: 
+      objectReference: {fileID: 4779386749785102300, guid: 16e7c398ef7b06a41bf42db2aadc62f8,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 510425525255663826, guid: 95d78c83428ad504eaf09d6c8516cc93, type: 3}
     - {fileID: 0}
