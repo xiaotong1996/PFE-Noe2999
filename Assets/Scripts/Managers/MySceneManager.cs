@@ -132,7 +132,7 @@ public class MySceneManager : MonoBehaviour
         Time.timeScale = 1;
             SceneDataModel.lastScene = SceneManager.GetActiveScene().name;
             SceneDataModel.curscene = name;
-            Debug.Log(SceneDataModel.lastScene + " " + SceneDataModel.curscene + gameObject.name);
+//            Debug.Log(SceneDataModel.lastScene + " " + SceneDataModel.curscene + gameObject.name);
             SoundManager.Instance.PlayAudioByName("click");
             if (isEnd)
                 sceneName = name;

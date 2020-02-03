@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
 
     public bool IsSleep = false;
 
+    public GameObject heart;
+    private Transform heartContainer;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -67,6 +71,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject heartContainerObject;
+        heartContainerObject = GameObject.Find("heartContainer");
+        if (heartContainerObject != null) heartContainer = heartContainerObject.transform;          
+
         // To update sea level UI and energy UI each frame 
         UIManager.Instance.SetSeaLevelMax(seaLevelMax);
         UIManager.Instance.UpdateSeaLevel(SeaLevel);
@@ -133,8 +141,8 @@ public class GameManager : MonoBehaviour
     public void UpdateSeaLevel(float value)
     {
 
-        Debug.Log("seaLevel" + seaLevel);
-        Debug.Log("energie" + energie);
+        //Debug.Log("seaLevel" + seaLevel);
+        //Debug.Log("energie" + energie);
         if (Energie >= 10)
         {
             seaLevel -= value;
@@ -156,7 +164,14 @@ public class GameManager : MonoBehaviour
             JoueurDestination = checkarrived.DestinationStay;
         }
     }
+    public void EnergieEffect(Transform depart)
+    {
+        GameObject instanciedHeart = Instantiate(heart);
+        instanciedHeart.transform.SetParent(heartContainer);
+        Debug.Log("ok");
+        instanciedHeart.transform.position = depart.position;
 
+    }
 
 
 }

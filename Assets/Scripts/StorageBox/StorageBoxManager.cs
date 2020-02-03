@@ -100,7 +100,8 @@ public class StorageBoxManager : MonoBehaviour
                       
                         BoxDataModel.ReduceItem(preGrid.name, item);
                     }
-                    //Debug.Log(hit.collider.name + "eats the " + item.Name + "!");
+
+                    GameManager.Instance.EnergieEffect(hit.collider.transform);
                 }
                 else
                 {

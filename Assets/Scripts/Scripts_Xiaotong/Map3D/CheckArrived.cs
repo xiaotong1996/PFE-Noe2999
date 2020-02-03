@@ -25,7 +25,7 @@ public class CheckArrived : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Destination>().Name.Equals(moveOnEarth.IslandChosenName))
         {
-            Debug.Log(moveOnEarth.IslandChosenName);
+//            Debug.Log(moveOnEarth.IslandChosenName);
             IsArrived = true;
             DestinationStay = other.gameObject;
             if (DestinationStay != null)
@@ -65,7 +65,7 @@ public class CheckArrived : MonoBehaviour
             moveOnEarth.IsMove = false;
             SceneManager.LoadScene("vaiseau_Ile");
             IsOnLand = true;
-            print(gameObject.name);
+//            print(gameObject.name);
         }
     }
 }
