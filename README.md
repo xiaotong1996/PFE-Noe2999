@@ -1,8 +1,8 @@
 # PFE-Noe2999
-Chen Xiaotong  </br>
-Delavelle Quentin  </br>
-Lheureux Etienne  </br>
-Xu Ruitong
+Chen Xiaotong  </br>  
+Delavelle Quentin  </br>  
+Lheureux Etienne  </br>  
+Xu Ruitong  
 ## Project introduction
 This project is carried out in the academic framework of the third year of TSP
 and ENSIIE.
