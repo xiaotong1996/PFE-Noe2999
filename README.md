@@ -1,7 +1,7 @@
 # PFE-Noe2999
-Chen Xiaotong</br>
-Delavelle Quentin</br>
-Lheureux Etienne</br>
+Chen Xiaotong  </br>
+Delavelle Quentin  </br>
+Lheureux Etienne  </br>
 Xu Ruitong
 ## Project introduction
 This project is carried out in the academic framework of the third year of TSP
@@ -15,7 +15,7 @@ To do so, the player will travel to the various islands aboard his boat, islands
 
 ## Code Structure
 ## References
-[1] Package Unity 2D Sprite Outline      --     Hanna Fiani </br>
-[2] Package Unity Blue Cartoon GUI Skin  --     3d.rain</br>
-[3] All the musics and sounds effect -- http://www.aigei.com/</br>
-[4] All the icons -- https://www.flaticon.com/  </br>
+[1] Package Unity 2D Sprite Outline      --     Hanna Fiani </br>  
+[2] Package Unity Blue Cartoon GUI Skin  --     3d.rain</br>  
+[3] All the musics and sounds effect -- http://www.aigei.com/</br>  
+[4] All the icons -- https://www.flaticon.com/  </br>  
