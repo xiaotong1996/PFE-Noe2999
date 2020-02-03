@@ -4,6 +4,9 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+/// <summary>
+/// unsed
+/// </summary>
 public static class mySaveLoad 
 {
     public static List<Game> savedGames = new List<Game>();

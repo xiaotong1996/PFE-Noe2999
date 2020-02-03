@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// DontDestroy is used for SunBackground gameobject to keep it available in different screens.
+/// </summary>
 public class DontDestroy : MonoBehaviour
 {
     public static DontDestroy Instance;
@@ -18,5 +21,5 @@ public class DontDestroy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-   
+
 }

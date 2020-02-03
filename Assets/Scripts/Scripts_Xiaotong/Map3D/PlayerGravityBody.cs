@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGravityBody : MonoBehaviour {
+/// <summary>
+/// Associate PlanetScript and ship's transform. And keep attracting the ship.
+/// </summary>
+public class PlayerGravityBody : MonoBehaviour
+{
 
     public PlanetScript attractorPlanet;
     private Transform playerTransform;

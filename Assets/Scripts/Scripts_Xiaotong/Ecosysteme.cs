@@ -12,7 +12,7 @@ public enum EcosystemeType
 }
 
 /// <summary>
-/// Classe <c>Ecosysteme</c>
+/// Classe <c>Ecosysteme</c> represents ecosysteme of an island.
 /// </summary>
 public class Ecosysteme
 {

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Carte represnets the Earth, Destinations records islands.
+/// </summary>
 public class Carte : MonoBehaviour
 {
     [SerializeField]
@@ -12,12 +15,12 @@ public class Carte : MonoBehaviour
 
     private List<Destination> destinations;
     private Destination destinationActuelle;
-    
+
 
     public Destination DestinationActuelle { get => destinationActuelle; set => destinationActuelle = value; }
     public List<Destination> Destinations { get => destinations; set => destinations = value; }
     public int NombreDeDestination { get => nombreDeDestination; set => nombreDeDestination = value; }
-   
+
     public GameObject DestinationPrefab { get => destinationPrefab; set => destinationPrefab = value; }
 
 

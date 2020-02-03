@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// unsed.
+/// </summary>
 public class LoadButtonClicked : MonoBehaviour
 {
     public void Click()

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// AddFlag is used when player chooses an island. It will show a flag on the Island.
+/// </summary>
 public class AddFlag : MonoBehaviour
 {
 
@@ -12,11 +15,6 @@ public class AddFlag : MonoBehaviour
     void Start()
     {
         flagPrefab = Resources.Load<GameObject>("Prefabs/UI/Map/flag_med");
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 
     // Update is called once per frame

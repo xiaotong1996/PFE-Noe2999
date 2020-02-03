@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// SpawIsland is used to Instantiate island prefab.
+/// It will also show a notification when the new island is created.
+/// </summary>
 public class SpawIsland : MonoBehaviour
 {
     [SerializeField]
@@ -58,6 +62,10 @@ public class SpawIsland : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Instantiate island randomly
+    /// </summary>
+    /// <param name="ileNumber"></param>
     public void spawnIsland(int ileNumber)
     {
         for (int i = 0; i < ileNumber; i++)
@@ -73,7 +81,6 @@ public class SpawIsland : MonoBehaviour
 
             if (detectOverlap(spawnedIle.GetComponent<Collider>()))
             {
-                //Debug.Log("overlap");
                 Destroy(spawnedIle);
                 i--;
             }
@@ -81,20 +88,18 @@ public class SpawIsland : MonoBehaviour
             {
                 islands.Add(spawnedIle);
             }
-            //var x = Random.Range(-1f, 1f);
-            //var y = Random.Range(-1f, 1f);
-            //var z = Random.Range(-1f, 1f);
-
-            //var vec = new Vector3(x, y, z).normalized * r*100;
-          
-           
         }
     }
 
+    /// <summary>
+    /// Detect overlap among islands and ship
+    /// </summary>
+    /// <param name="islandCollider"></param>
+    /// <returns></returns>
     private bool detectOverlap(Collider islandCollider)
     {
         var vaisseauCollider = vaisseau.GetComponent<Collider>();
-        foreach(var island in islands)
+        foreach (var island in islands)
         {
             if (island.GetComponent<Collider>().bounds.Intersects(islandCollider.bounds))
             {
@@ -102,8 +107,7 @@ public class SpawIsland : MonoBehaviour
                 return true;
             }
         }
-
-        return islandCollider.bounds.Intersects(vaisseauCollider.bounds);  
+        return islandCollider.bounds.Intersects(vaisseauCollider.bounds);
     }
 
 }

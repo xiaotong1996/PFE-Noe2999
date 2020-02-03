@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// CheckArrived is used for checking the state of the ship.
+/// It can help transfer to next screen when the ship arrived.
+/// </summary>
 public class CheckArrived : MonoBehaviour
 {
     private bool isArrived;
@@ -19,19 +23,19 @@ public class CheckArrived : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Destination>().Name.Equals( moveOnEarth.IslandChosenName))
+        if (other.gameObject.GetComponent<Destination>().Name.Equals(moveOnEarth.IslandChosenName))
         {
             Debug.Log(moveOnEarth.IslandChosenName);
             IsArrived = true;
             DestinationStay = other.gameObject;
-            if(DestinationStay!=null)
-            IslandStayName = other.gameObject.GetComponent<Destination>().Name;
+            if (DestinationStay != null)
+                IslandStayName = other.gameObject.GetComponent<Destination>().Name;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Destination>().Name.Equals( IslandStayName))
+        if (other.gameObject.GetComponent<Destination>().Name.Equals(IslandStayName))
         {
             IsArrived = false;
             IsOnLand = false;
@@ -49,11 +53,12 @@ public class CheckArrived : MonoBehaviour
         IsOnLand = false;
     }
 
+
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(IsOnLand);
-        if (IsArrived&&!IsOnLand)
+        if (IsArrived && !IsOnLand)
         {
             // arrived show island scene
             // TODO

@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// EntrerVaisseau allows player click ship model and enter the inner screen of the ship
+/// </summary>
 public class EntrerVaisseau : MonoBehaviour
 {
 
     private RaycastHit hit;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// ShowIslandInfo is used to show the islandinfo canvas when player choose an island.
+/// </summary>
 public class ShowIslandInfo : MonoBehaviour
 {
     private GameObject vaisseau;
@@ -41,14 +43,12 @@ public class ShowIslandInfo : MonoBehaviour
 
 
         vaisseau = GameObject.FindGameObjectWithTag("Vaisseau");
-        //var buttonOK = uiPrefab.transform.GetChild(1).gameObject;
-        //buttonOK.GetComponent<Button>().onClick.AddListener(OnButtonOKClicked);
-
-        //var buttonCancel = uiPrefab.transform.GetChild(2).gameObject;
-        //buttonCancel.GetComponent<Button>().onClick.AddListener(OnButtonCancelClicked);
     }
 
-    // Update is called once per frame
+
+    /// <summary>
+    /// when detecting player's input form android platform and general platform, we need to use different functions.
+    /// </summary>
     void Update()
     {
 
@@ -109,18 +109,6 @@ public class ShowIslandInfo : MonoBehaviour
                 }
 
             }
-
-            ////使用方法二：传递触摸手势坐标
-            //if (ClickIsOverUI.Instance.IsPointerOverUIObject(Input.GetTouch(0).position))
-            //{
-            //    Debug.Log("方法二： 点击在UI 上");
-            //}
-
-            ////使用方法三：传递画布组件，传递触摸手势坐标
-            //if (ClickIsOverUI.Instance.IsPointerOverUIObject(GetComponent<Canvas>(), Input.GetTouch(0).position))
-            //{
-            //    Debug.Log("方法三： 点击在UI 上");
-            //}
         }
 #endif
 
@@ -177,17 +165,11 @@ public class ShowIslandInfo : MonoBehaviour
                     {
                         island = null;
                     }
-
-
                 }
-
             }
-
-
         }
 
         var IslandChosenName = vaisseau.GetComponent<MoveOnEarth>().IslandChosenName;
-        //if (IslandChosenName == GetComponent<Destination>().Name)
         if (island != null && island.GetComponent<Destination>().Name == IslandChosenName)
         {
 
@@ -253,6 +235,11 @@ public class ShowIslandInfo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Useless cause we don't want to show any text.
+    /// </summary>
+    /// <param name="title"></param>
+    /// <param name="ecosystemeType"></param>
     public void ChangeTitle(GameObject title, EcosystemeType ecosystemeType)
     {
         var component = title.GetComponent<Text>();
@@ -278,6 +265,11 @@ public class ShowIslandInfo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Change the image accroding to EcosystemeType
+    /// </summary>
+    /// <param name="image"></param>
+    /// <param name="ecosystemeType"></param>
     public void ChangeImage(GameObject image, EcosystemeType ecosystemeType)
     {
         var component = image.GetComponent<Image>();
@@ -303,13 +295,18 @@ public class ShowIslandInfo : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Useless we don't need a cancal button
+    /// </summary>
     public void OnButtonCancelClicked()
     {
-        Debug.Log("cancel is called");
         if (ui != null)
             ui.SetActive(false);
     }
 
+    /// <summary>
+    /// Respond when player chooses an island.
+    /// </summary>
     public void OnButtonOKClicked()
     {
 

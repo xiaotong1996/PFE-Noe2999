@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LoadBackground is used to change island background image when player enter an island.
+/// </summary>
 public class LoadBackground : MonoBehaviour
 {
     private GameObject currentDestination;
@@ -25,12 +28,6 @@ public class LoadBackground : MonoBehaviour
             LoadBg();
             ChangeBg();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void LoadBg()

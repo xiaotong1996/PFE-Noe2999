@@ -9,13 +9,11 @@ using UnityEngine;
 public class Vaisseau : MonoBehaviour
 {
     private static Vaisseau instance;
-    public static Vaisseau Instance  { get { return instance; } }
+    public static Vaisseau Instance { get { return instance; } }
 
     [SerializeField]
     private Dictionary<int, SalleAnimaux> salles = new Dictionary<int, SalleAnimaux>();
     public Dictionary<int, SalleAnimaux> Salles { get => salles; set => Salles = value; }
-
-   
 
     public SalleAnimaux[] s;
 
@@ -24,41 +22,39 @@ public class Vaisseau : MonoBehaviour
     {
         if (instance == null)
         {
-            
+
             instance = this;
         }
         else if (instance != null)
         {
             Destroy(gameObject);
         }
-       
+
         //Debug.Log(s.Length);
         int i = 0;
 
-        foreach(SalleAnimaux v in s)
+        foreach (SalleAnimaux v in s)
         {
             //Debug.Log("vaisseua " + v.name + " " + i);
             salles.Add(i++, v);
-            
+
         }
 
-        
+
     }
     // Start is called before the first frame update
     void Start()
     {
 
-        
         Init();
-        foreach(var pair in Salles)
+        foreach (var pair in Salles)
         {
-            //Debug.Log("aa " + pair.Key + " " + pair.Value.name + " " + pair.Value.Animaux.Count);
             Transform salleTransform = pair.Value.transform;
-            
+
             SalleAnimaux s = pair.Value;
 
 
-            for(int i = 0; i < s.Animaux.Count; i++)
+            for (int i = 0; i < s.Animaux.Count; i++)
             {
 
                 float x = Random.Range(-0.5f, 0.5f) + salleTransform.position.x;
@@ -78,43 +74,38 @@ public class Vaisseau : MonoBehaviour
                     prefab = (GameObject)Resources.Load("Prefabs/Animals/zebra");
 
                 GameObject tmp = Instantiate(prefab, pos, Quaternion.identity);
-//                Debug.Log(s.Animaux[i].Id + "value");
                 EtreVivant e = tmp.GetComponent<EtreVivant>();
-                //Debug.Log(e.Fatigue + " "+"value");
 
                 tmp.transform.SetParent(s.transform);
                 e.EtreVivantCopy(s.Animaux[i]);
                 e.PositionSalle = s;
                 e.Id = s.Animaux[i].Id;
                 s.Animaux[i] = e;
-                //Debug.Log(tmp.GetComponent<EtreVivant>().Id + " " + "value2e");
-
 
             }
-        
-            
+
+
         }
     }
 
-   
 
 
 
 
-        /// <summary>
-        /// Initialisation pour les datas des animaux dans le vaiseau
-        /// </summary>
-  
+
+    /// <summary>
+    /// Initialisation pour les datas des animaux dans le vaiseau
+    /// </summary>
     private void Init()
     {
         Debug.Log("value");
         Dictionary<EtreVivant, int> datamodel = AnimalDataModel.GetDataModel();
         //Salles.Clear();
-        foreach(var pair in datamodel)
+        foreach (var pair in datamodel)
         {
             Salles[pair.Value].Animaux.Add(pair.Key);
             Debug.Log("value" + " " + pair.Key.Fatigue);
-            
+
         }
 
     }

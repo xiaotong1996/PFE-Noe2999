@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// unused
+/// </summary>
 public class mySaveGame : MonoBehaviour
 {
     public void Click()

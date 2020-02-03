@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// PlayerSettings is used to save and load player's settings including volume of music and sound.
+/// </summary>
 public class PlayerSettings : MonoBehaviour
 {
     [SerializeField]

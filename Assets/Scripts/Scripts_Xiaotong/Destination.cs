@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Destination represents an island. Its ecosystem is defined randomly.
+/// </summary>
 [System.Serializable]
 public class Destination : MonoBehaviour
 {
@@ -37,15 +39,13 @@ public class Destination : MonoBehaviour
 
     #endregion
 
-    
-
     private void Awake()
     {
         PositionDansLaCarte = transform.position;
 
         System.Array ecosysteme = System.Enum.GetValues(typeof(EcosystemeType));
 
-        EcosystemeType randomEcosystemType = (EcosystemeType)ecosysteme.GetValue(Random.Range(0,ecosysteme.Length));
+        EcosystemeType randomEcosystemType = (EcosystemeType)ecosysteme.GetValue(Random.Range(0, ecosysteme.Length));
 
         //for test
         switch (randomEcosystemType)
@@ -69,30 +69,10 @@ public class Destination : MonoBehaviour
 
         System.Array races = System.Enum.GetValues(typeof(EnumRace));
         var raceNum = Random.Range(1, 2);
-        for(int i = 0; i < raceNum; i++)
+        for (int i = 0; i < raceNum; i++)
         {
             EnumRace randomraceType = (EnumRace)races.GetValue(Random.Range(0, races.Length));
             EtreVivant.Add(randomraceType);
-            //switch (randomraceType)
-            //{
-            //    case EnumRace.CHAT:
-            //        EtreVivant.Add(new Chat());
-            //        break;
-            //    case EnumRace.CHIEN:
-            //        EtreVivant.Add(new Chien());
-            //        break;
-            //    case EnumRace.POULE:
-            //        EtreVivant.Add(new Poule());
-            //        break;
-            //    case EnumRace.LION:
-            //        EtreVivant.Add(new Lion());
-            //        break;
-            //    case EnumRace.ZEBRE:
-            //        EtreVivant.Add(new Zebre());
-            //        break;
-            //    default:
-            //        break;
-            //}
         }
 
         Ecosysteme = new Ecosysteme(randomEcosystemType);

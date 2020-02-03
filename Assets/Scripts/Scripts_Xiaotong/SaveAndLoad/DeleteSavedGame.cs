@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+/// <summary>
+/// Unsed
+/// </summary>
 public class DeleteSavedGame : MonoBehaviour
 {
     public void Click()
@@ -12,7 +15,8 @@ public class DeleteSavedGame : MonoBehaviour
             try
             {
                 File.Delete(Application.persistentDataPath + "/savedGames.gd");
-            }catch(System.IO.IOException e)
+            }
+            catch (System.IO.IOException e)
             {
                 Debug.Log(e.Message);
                 return;

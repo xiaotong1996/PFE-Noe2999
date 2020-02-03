@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetScript : MonoBehaviour {
+/// <summary>
+/// PlanetScript is used to give Earth an appeal force to attract the ship.
+/// </summary>
+public class PlanetScript : MonoBehaviour
+{
 
     public float gravity = -12;
 

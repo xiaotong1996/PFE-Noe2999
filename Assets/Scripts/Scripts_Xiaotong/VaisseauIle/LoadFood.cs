@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LoadFood is used to Instantiate food in islands.
+/// </summary>
 public class LoadFood : MonoBehaviour
 {
     private GameObject currentDestination;
@@ -44,12 +47,6 @@ public class LoadFood : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void LoadPrefab()
     {
         bonePrefab = Resources.Load<GameObject>("Prefabs/Foods/bone");
@@ -60,6 +57,9 @@ public class LoadFood : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Instantiate various food in an island, the food's number is decided by EcosystemType.
+    /// </summary>
     void InstanseFood()
     {
         var destion = currentDestination.GetComponent<Destination>();
@@ -71,7 +71,7 @@ public class LoadFood : MonoBehaviour
                 fishNumMax = 3;
                 grassNumMax = 3;
                 meatNumMax = 3;
-                seedNumMax =3;
+                seedNumMax = 3;
                 break;
             case EcosystemeType.DESERT:
                 boneNumMax = 5;
@@ -116,10 +116,10 @@ public class LoadFood : MonoBehaviour
     void InstanseBone(int boneNumMax)
     {
         var boneNum = Random.Range(0, boneNumMax);
-        for(int i = 0; i < boneNum; ++i)
+        for (int i = 0; i < boneNum; ++i)
         {
             var position = new Vector3(Random.Range(-8.0f, -3.0f), Random.Range(-4.0f, 4.3f), -0.5f);
-            var foodGameObject = Instantiate(bonePrefab, position, Quaternion.identity,foodParent.transform);
+            var foodGameObject = Instantiate(bonePrefab, position, Quaternion.identity, foodParent.transform);
         }
     }
 

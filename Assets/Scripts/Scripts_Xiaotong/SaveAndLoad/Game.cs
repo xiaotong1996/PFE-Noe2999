@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Unsed
+/// </summary>
 [System.Serializable]
-public class Game 
+public class Game
 {
     ////public static Game current;
     //public int IslandNum;
 
     //public List<Transform> destinations=new List<GameObject>();
     //public List<GameObject> etreVivants=new List<GameObject>();
-   
+
     //public Game()
     //{
     //    var islands=GameObject.FindGameObjectsWithTag("Island");

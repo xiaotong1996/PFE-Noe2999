@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// LoadAnimaux is used to Instantiate animals in islands.
+/// </summary>
 public class LoadAnimaux : MonoBehaviour
 {
     private GameObject currentDestination;
@@ -17,7 +20,7 @@ public class LoadAnimaux : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         currentDestination = GameManager.Instance.JoueurDestination;
         if (currentDestination != null)
         {
@@ -29,29 +32,32 @@ public class LoadAnimaux : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void LoadPrefab()
     {
         chatPrefab = Resources.Load<GameObject>("Prefabs/Animals/cat");
-        chienPrefab= Resources.Load<GameObject>("Prefabs/Animals/dog");
-        poulePrefab= Resources.Load<GameObject>("Prefabs/Animals/hen");
-        lionPrefab= Resources.Load<GameObject>("Prefabs/Animals/lion");
-        zebrePrefab= Resources.Load<GameObject>("Prefabs/Animals/zebra");
+        chienPrefab = Resources.Load<GameObject>("Prefabs/Animals/dog");
+        poulePrefab = Resources.Load<GameObject>("Prefabs/Animals/hen");
+        lionPrefab = Resources.Load<GameObject>("Prefabs/Animals/lion");
+        zebrePrefab = Resources.Load<GameObject>("Prefabs/Animals/zebra");
 
     }
 
+    /// <summary>
+    /// Instantiate animaul accronding to their RaceType.
+    /// </summary>
     void InstanseAnimaux()
     {
         var animauxList = currentDestination.GetComponent<Destination>().EtreVivant;
-        foreach(var animal in animauxList)
+        foreach (var animal in animauxList)
         {
             var position = new Vector3(Random.Range(-7.9f, -3.7f), Random.Range(-2.1f, 3.6f), -0.5f);
             switch (animal)
             {
                 case EnumRace.CHAT:
-                    var animalGameObject=Instantiate(chatPrefab, position, Quaternion.identity);
+                    var animalGameObject = Instantiate(chatPrefab, position, Quaternion.identity);
                     animalGameObject.GetComponent<Chat>().PositionDestination = CurrentDestination.GetComponent<Destination>();
                     break;
                 case EnumRace.CHIEN:
@@ -74,7 +80,7 @@ public class LoadAnimaux : MonoBehaviour
                 default:
                     break;
             }
-          
+
 
 
         }

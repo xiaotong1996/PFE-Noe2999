@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// RotateEarth allows player to rotate the Earth.
+/// </summary>
 public class RotateEarth : MonoBehaviour
 {
     public float rotationSpeed = 8;  //This will determine max rotation speed, you can adjust in the inspector
     Ray r;
     RaycastHit rh;
     public MoveOnEarth moveOnEarth;
-   
-
     float mouseKeyTime = 0;
+
     void Update()
     {
         //If you want to prevent rotation, just don't call this method
@@ -18,6 +20,9 @@ public class RotateEarth : MonoBehaviour
             RotateObject();
     }
 
+    /// <summary>
+    /// mouseKeyTime is used to make player's input less sensible.
+    /// </summary>
     void RotateObject()
     {
         r = Camera.main.ScreenPointToRay(Input.mousePosition);

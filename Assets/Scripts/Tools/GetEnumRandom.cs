@@ -5,6 +5,9 @@ using System.Linq;
 using UnityEngine;
 using Random = System.Random;
 
+/// <summary>
+/// unsed class
+/// </summary>
 public static class GetEnumRandom
 {
     //static T GetValue()
