@@ -32,7 +32,7 @@ To do so, the player will travel to the various islands aboard his boat, islands
 
 **UML class diagram**
 
-![Noe2999](.\Noe2999.jpg)
+![Noe2999](Noe2999.jpg)
 
 ### Modules
 
