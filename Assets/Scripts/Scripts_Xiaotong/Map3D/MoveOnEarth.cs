@@ -97,7 +97,7 @@ public class MoveOnEarth : MonoBehaviour
                 }
             }
 
-            if (IsMove)
+            if (IsMove&&GameManager.Instance.Energie>=3)
             {
                 Move();
                 gameObject.GetComponent<CheckArrived>().IsOnLand = false;

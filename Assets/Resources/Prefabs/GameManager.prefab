@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seaLevelSlider: {fileID: 0}
   energySlider: {fileID: 0}
+  energy_Text: {fileID: 0}
 --- !u!114 &510425525255663827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,3 +63,5 @@ MonoBehaviour:
   speedSeaLevel: 0.5
   energiemax: 100
   energie: 100
+  energyAddPerFrame: 0.1
+  IsSleep: 0

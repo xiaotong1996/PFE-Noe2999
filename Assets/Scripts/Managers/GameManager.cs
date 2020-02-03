@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     public float Energie { get => energie; private set => energie = value; }
 
     [SerializeField]
-    private float energyAddPerFrame=0.1f;
+    private float energyAddPerFrame=0f;
 
     public Carte Carte { get => carte; set => carte = value; }
     public GameObject JoueurDestination { get => joueurDestination; set => joueurDestination = value; }
@@ -78,9 +79,18 @@ public class GameManager : MonoBehaviour
 
         AjouterEnergie(energyAddPerFrame * Time.deltaTime);
 
+        CheckWin();
+
+
     }
 
-  
+    void CheckWin()
+    {
+        if (SeaLevel <= 0)
+        {
+            SceneManager.LoadScene("End");
+        }
+    }
 
    public  void AjouterEnergie(float n_energie)
     {
