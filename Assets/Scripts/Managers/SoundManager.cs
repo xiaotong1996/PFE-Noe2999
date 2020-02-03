@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class is a singleton to control the sound effect
+/// </summary>
 public class SoundManager : MonoBehaviour
 {
 
@@ -26,12 +29,20 @@ public class SoundManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// To check if the sound is playing
+    /// </summary>
+    /// <returns> true if the sound is playing </returns>
     public bool IsAudioPlay()
     {
         return audioSource.isPlaying;
 
     }
 
+    /// <summary>
+    /// Play sound by audioclip
+    /// </summary>
+    /// <param name="ac"></param>
     public void PlayAudio(AudioClip ac)
     {
         //AudioSource.PlayClipAtPoint(ac, Camera.main.transform.position);
@@ -45,6 +56,10 @@ public class SoundManager : MonoBehaviour
         audioSource.Play();
     }
 
+    /// <summary>
+    /// Play sound by sound name, the sound file must be put in the folder Resources/Sounds/
+    /// </summary>
+    /// <param name="name"></param>
     public void PlayAudioByName(string name)
     {
         //audioSource.volume = 0.05f;

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class is to save the information for each food
+/// </summary>
 public class FoodInfo : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -20,7 +23,7 @@ public class FoodInfo : MonoBehaviour
     private void OnMouseUp()
     {
         StorageBoxManager.Instance.StoreItem(Name);
-        Debug.Log("storeC");
+       
 
         Destroy(gameObject);
     }

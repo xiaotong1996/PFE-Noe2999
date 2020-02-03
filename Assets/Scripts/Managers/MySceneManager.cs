@@ -4,44 +4,48 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// This is a class to manage the changement of all the scenes 
+/// </summary>
 public class MySceneManager : MonoBehaviour
 {
 
     public GameObject menu;
-     float fadeSpeed = 1.5f;
+    //the speed of the changement of black fade at the beginning of the scene
+    float fadeSpeed = 1.5f;
     public bool sceneStarting = true;
     public RawImage rawImage;
     public bool isEnd = false;
     string sceneName;
     public RectTransform rectTransform;
-    void Awake()
-    {
-        //rawImage = GetComponent<RawImage>();
-    }
-    // Start is called before the first frame update
+ 
+
     void Start()
     {
 
         rectTransform.sizeDelta = new Vector2(Screen.width, Screen.height);
-        //Debug.Log("color" + rawImage.color.ToString());
-       // Debug.Log("color" + Color.clear.ToString());
-        //rawImage.color = Color.black;
-        // menu = GameObject.FindGameObjectWithTag("Menu");
+      
     }
+    /// <summary>
+    /// fade black to clear
+    /// </summary>
     private void FadeToClear()
     {
         rawImage.color = Color.Lerp(rawImage.color, Color.clear, fadeSpeed * Time.deltaTime);
     }
-
+    /// <summary>
+    /// fade clear to black
+    /// </summary>
     private void FadeToBlack()
     {
         rawImage.color = Color.Lerp(rawImage.color, Color.black, fadeSpeed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// fade at the beginning
+    /// </summary>
     void StartScene()
-    {
-
-        
+    { 
         if(SceneDataModel.lastScene == "Introduction" || SceneDataModel.lastScene == "Start")
             MusicManager.Instance.MusicStop();
         FadeToClear();
@@ -55,6 +59,10 @@ public class MySceneManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// fade at the end of the scene
+    /// </summary>
+    /// <param name="name"></param>
      void EndScene(string name)
     {
         rawImage.gameObject.SetActive(true);
@@ -65,10 +73,8 @@ public class MySceneManager : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
+  
+    
     // Update is called once per frame
     void Update()
     {
@@ -79,7 +85,9 @@ public class MySceneManager : MonoBehaviour
             EndScene(sceneName);
     }
 
-
+    /// <summary>
+    /// button function for menu
+    /// </summary>
     public void MenuBtnClick()
     {
         SoundManager.Instance.PlayAudioByName("click");
@@ -100,6 +108,9 @@ public class MySceneManager : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// button function for introduction scene
+    /// </summary>
     public void IntroductionClick()
     {
         Time.timeScale = 1;
@@ -108,6 +119,11 @@ public class MySceneManager : MonoBehaviour
         SceneDataModel.lastScene = SceneManager.GetActiveScene().name;
         SceneDataModel.curscene = "Introduction";
     }
+
+    /// <summary>
+    /// To change scene
+    /// </summary>
+    /// <param name="name"></param>
     public void LoadScene(string  name)
     {
             if(name == "Introduction")

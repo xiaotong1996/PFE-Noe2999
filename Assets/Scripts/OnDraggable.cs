@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This is a class to control the drag operation
+/// Including the changement of the information
+/// </summary>
 public class OnDraggable : MonoBehaviour
 {
     public bool draggable = false;
@@ -32,28 +36,18 @@ public class OnDraggable : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //Debug.Log("down1");
-        //if(draggable)
-        //{ 
+        
         if (!AnimalDataModel.isPause)
         {
             originalPosition = transform.position;
             transform.localScale *= new Vector2(1.5f, 1.5f);
             GetComponent<SpriteRenderer>().material.SetFloat("_Thickness", 20);
         }
-           // Debug.Log("down");
-        //}
+           
     }
 
     private void OnMouseDrag()
     {
-        //if (camera==null)
-        //{
-        //    Debug.Log("nulllllllllllllllllll");
-        //}
-        //else
-        //{
-        //Debug.Log(gameObject.name);
         isDrag = true;
         if (!AnimalDataModel.isPause)
         {             transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y,-0.5f);
