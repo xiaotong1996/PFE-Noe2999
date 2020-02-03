@@ -49,7 +49,7 @@ public class Chat : EtreVivant
         Fatigue = 10f;
         Chronolimite = 25 + UnityEngine.Random.Range(0.0f, 10.0f);
         Id = Guid.NewGuid().ToString("N");
-        Debug.Log("ID");
+//        Debug.Log("ID");
     }
 
 

@@ -141,8 +141,8 @@ public class GameManager : MonoBehaviour
     public void UpdateSeaLevel(float value)
     {
 
-        Debug.Log("seaLevel" + seaLevel);
-        Debug.Log("energie" + energie);
+        //Debug.Log("seaLevel" + seaLevel);
+        //Debug.Log("energie" + energie);
         if (Energie >= 10)
         {
             seaLevel -= value;

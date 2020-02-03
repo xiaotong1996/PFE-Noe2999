@@ -107,13 +107,13 @@ public class Vaisseau : MonoBehaviour
   
     private void Init()
     {
-        Debug.Log("value");
+//        Debug.Log("value");
         Dictionary<EtreVivant, int> datamodel = AnimalDataModel.GetDataModel();
         //Salles.Clear();
         foreach(var pair in datamodel)
         {
             Salles[pair.Value].Animaux.Add(pair.Key);
-            Debug.Log("value" + " " + pair.Key.Fatigue);
+           //s Debug.Log("value" + " " + pair.Key.Fatigue);
             
         }
 
